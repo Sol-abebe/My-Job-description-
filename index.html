@@ -1,0 +1,2352 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Solomon Abebe Kebede - General Practitioner IV Practice & Competency Hub</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans Ethiopic', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for Ethiopic and Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Ethiopic:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif;
+            perspective: 1000px;
+            background-attachment: fixed;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+            transform-style: preserve-3d;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px) rotateX(1deg) rotateY(1deg);
+            box-shadow: 0 25px 35px rgba(14, 165, 233, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* 3D Flip Card Effect */
+        .flip-card {
+            perspective: 1000px;
+            height: 300px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+        }
+
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(14, 165, 233, 0.4);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(14, 165, 233, 0.7);
+        }
+
+        .bg-mesh {
+            background-color: #0f172a;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.25) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.2) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.2) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.15) 0px, transparent 50%);
+        }
+
+        .light .bg-mesh {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(14, 165, 233, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-mesh min-h-screen text-slate-800 dark:text-slate-100 transition-colors duration-300">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Doctor Profile -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/30 transform hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-user-doctor text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-brand-400 to-indigo-400" id="main-header-title">
+                            Dr. Solomon Abebe Kebede
+                        </h1>
+                        <p class="text-xs text-slate-400 font-medium" id="main-header-sub">General Practitioner IV (ጠቅላላ ህክምና IV, Grade XVII) - MOH Ethiopia</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex items-center space-x-1 bg-slate-200/50 dark:bg-slate-800/50 p-1.5 rounded-2xl border border-slate-300/50 dark:border-slate-700/50 backdrop-blur-md">
+                    <button onclick="switchTab('jd')" id="tab-jd" class="px-5 py-2.5 rounded-xl font-medium text-sm transition-all flex items-center gap-2 bg-white dark:bg-brand-600 text-brand-600 dark:text-white shadow-md">
+                        <i class="fa-solid fa-file-contract"></i> <span>Official JD</span>
+                    </button>
+                    <button onclick="switchTab('flashcards')" id="tab-flashcards" class="px-5 py-2.5 rounded-xl font-medium text-sm transition-all flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-brand-500">
+                        <i class="fa-solid fa-layer-group"></i> <span>3D Flashcards</span>
+                    </button>
+                    <button onclick="switchTab('exam')" id="tab-exam" class="px-5 py-2.5 rounded-xl font-medium text-sm transition-all flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-brand-500">
+                        <i class="fa-solid fa-graduation-cap"></i> <span>100 Competitive MCQ Exam</span>
+                    </button>
+                </nav>
+
+                <!-- Action Controls -->
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl bg-slate-200/80 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-xs font-bold transition-all flex items-center gap-2 border border-slate-300/50 dark:border-slate-700">
+                        <i class="fa-solid fa-globe text-brand-500"></i>
+                        <span id="lang-label">AM / EN</span>
+                    </button>
+
+                    <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-200/80 dark:bg-slate-800/80 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-amber-400 flex items-center justify-center transition-all border border-slate-300/50 dark:border-slate-700">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Ribbon -->
+        <div class="md:hidden flex justify-around py-2.5 border-t border-slate-200/50 dark:border-slate-800 bg-slate-100/80 dark:bg-slate-900/80 text-xs font-semibold">
+            <button onclick="switchTab('jd')" id="mob-tab-jd" class="text-brand-500 flex items-center gap-1 font-bold">
+                <i class="fa-solid fa-file-contract"></i> <span>Official JD</span>
+            </button>
+            <button onclick="switchTab('flashcards')" id="mob-tab-flashcards" class="text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                <i class="fa-solid fa-layer-group"></i> <span>Cards</span>
+            </button>
+            <button onclick="switchTab('exam')" id="mob-tab-exam" class="text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                <i class="fa-solid fa-graduation-cap"></i> <span>100 Exam</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN APPLICATION CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= SECTION 1: BILINGUAL JOB DESCRIPTION (MOH OFFICIAL DOCUMENT) ================= -->
+        <section id="sec-jd" class="space-y-8 animate-fadeIn">
+            <!-- Header Identity Card -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 relative z-10">
+                    <div class="lg:col-span-2 space-y-3">
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-500/10 text-brand-400 border border-brand-500/20">Official Public Service Standard</span>
+                            <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-500/10 text-purple-400 border border-purple-500/20">Grade XVII</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold" id="doc-main-title">
+                            የሥራ መደቡ መጠሪያ፡ ጠቅላላ ህክምና IV (General Practitioner IV)
+                        </h2>
+                        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" id="doc-main-summary">
+                            Ministry of Health Civil Service Formal Position Description for Senior General Practitioners managing patient care, emergency triaging, research, and medical staff development.
+                        </p>
+                    </div>
+
+                    <!-- Metadata Sidebar Grid -->
+                    <div class="grid grid-cols-2 gap-3 text-xs bg-slate-900/40 p-4 rounded-2xl border border-slate-700/50">
+                        <div>
+                            <span class="text-slate-400 block font-semibold">የመሥሪያ ቤቱ ስም:</span>
+                            <span class="font-bold text-slate-200" id="meta-inst">ጤና ጥበቃ ሚኒስቴር</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block font-semibold">የሥራ ዘርፍ/ሂደት:</span>
+                            <span class="font-bold text-slate-200" id="meta-dept">ህክምና (Medicine)</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block font-semibold">የሥራ ደረጃ:</span>
+                            <span class="font-bold text-brand-400" id="meta-grade">XVII (17)</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-400 block font-semibold">የቅጥር ቀን (Hire Date):</span>
+                            <span class="font-bold text-amber-400" id="meta-hire-date">ሐምሌ 1, 2005 ዓ.ም (July 8, 2013)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DYNAMIC WORK EXPERIENCE CALCULATOR CARD -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/30 bg-gradient-to-r from-emerald-950/20 to-slate-900/50">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div class="space-y-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Live Experience Counter</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-100">የስራ ልምድ ስሌት (Accumulated Work Experience)</h3>
+                        <p class="text-xs text-slate-300">
+                            Hired on <span class="font-bold text-amber-400">Hamle 1, 2005 E.C.</span> (July 8, 2013 G.C.). Automatically updated to current date.
+                        </p>
+                    </div>
+
+                    <!-- Counter Display Cards -->
+                    <div class="grid grid-cols-3 gap-3 text-center w-full md:w-auto">
+                        <div class="p-3 sm:p-4 rounded-2xl bg-slate-900/70 border border-emerald-500/20 min-w-[80px]">
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-emerald-400" id="exp-years">0</span>
+                            <span class="text-[10px] sm:text-xs text-slate-400 uppercase font-semibold">Years (ዓመታት)</span>
+                        </div>
+                        <div class="p-3 sm:p-4 rounded-2xl bg-slate-900/70 border border-emerald-500/20 min-w-[80px]">
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-brand-400" id="exp-months">0</span>
+                            <span class="text-[10px] sm:text-xs text-slate-400 uppercase font-semibold">Months (ወራት)</span>
+                        </div>
+                        <div class="p-3 sm:p-4 rounded-2xl bg-slate-900/70 border border-emerald-500/20 min-w-[80px]">
+                            <span class="block text-2xl sm:text-3xl font-extrabold text-purple-400" id="exp-days">0</span>
+                            <span class="text-[10px] sm:text-xs text-slate-400 uppercase font-semibold">Days (ቀናት)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Position Overview & Purpose -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8">
+                <h3 class="text-lg font-bold text-brand-400 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-bullseye"></i> <span id="jd-purpose-heading">2.1. የሥራ መደቡ ዋና ዓላማ (Main Position Purpose)</span>
+                </h3>
+                <p class="text-sm leading-relaxed text-slate-200" id="jd-purpose-text">
+                    የህክምና አገልግሎት በመስጠት፤ በሽታን በመከላከልና ጤናን በማልማት፤ መካከለኛና ቀዶ ህክምና በማድረግ፤ ጥናትና ምርምር በማካሄድ፤ የሥልጠና ጽሑፎችን በማዘጋጀትና ሥልጠና በመስጠት፤ የኅብረተሰቡን ጤና እንዲጠበቅ ማድረግ ነው።
+                    <br><span class="text-slate-400 italic font-mono text-xs mt-2 block">(To preserve community health by rendering general medical treatment, preventing disease, promoting wellness, executing minor surgical interventions, carrying out operational clinical research, developing training curricula, and conducting professional health staff training.)</span>
+                </p>
+            </div>
+
+            <!-- Key Results Accordions (Result 1 - Result 4) -->
+            <div class="space-y-4" id="jd-accordion-container">
+                <!-- Javascript populates accordion sections with complete Amharic & English texts -->
+            </div>
+
+            <!-- Comprehensive Specifications Grid (Work Nature, Complexity, Risk, Resources) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Physical & Mental Demands -->
+                <div class="glass-card rounded-3xl p-6 space-y-4">
+                    <h4 class="font-bold text-base text-brand-400 flex items-center gap-2">
+                        <i class="fa-solid fa-brain"></i> <span id="spec-demands-title">3.1. የሥራው ባህሪና ፍላጎቶች</span>
+                    </h4>
+                    <ul class="text-xs space-y-2.5 text-slate-300">
+                        <li class="flex justify-between items-center bg-slate-800/40 p-2.5 rounded-xl border border-slate-700/50">
+                            <span>አእምሮአዊ ጥረት (Mental Strain):</span>
+                            <span class="font-bold text-amber-400">80%</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-slate-800/40 p-2.5 rounded-xl border border-slate-700/50">
+                            <span>የዐይን ጥረት (Visual Effort):</span>
+                            <span class="font-bold text-cyan-400">60%</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-slate-800/40 p-2.5 rounded-xl border border-slate-700/50">
+                            <span>በቁጭት መስራት (Sitting):</span>
+                            <span class="font-bold text-slate-200">55%</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-slate-800/40 p-2.5 rounded-xl border border-slate-700/50">
+                            <span>በእንቅስቃሴ መስራት (Moving):</span>
+                            <span class="font-bold text-slate-200">20%</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-slate-800/40 p-2.5 rounded-xl border border-slate-700/50">
+                            <span>በቆመበት መስራት (Standing):</span>
+                            <span class="font-bold text-slate-200">15%</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Environmental Hazards & Risk -->
+                <div class="glass-card rounded-3xl p-6 space-y-4">
+                    <h4 class="font-bold text-base text-rose-400 flex items-center gap-2">
+                        <i class="fa-solid fa-triangle-exclamation"></i> <span id="spec-hazards-title">3.8. ሥጋትና አደጋ (Hazards)</span>
+                    </h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        ሥራው ለተለያዩ ተላላፊ በሽታዎች (ተላላፊ ደምና የአየር ወለድ ህመሞች)፣ ለሹልና ቀዳጅ መሳሪያዎች ጉዳት፣ ለጨረርና ለከፍተኛ የስነ-ልቦናዊና አካላዊ ውጥረት የሚያጋልጥ ነው።
+                    </p>
+                    <div class="p-3 bg-rose-500/10 border border-rose-500/20 rounded-2xl text-[11px] text-rose-300">
+                        <i class="fa-solid fa-shield-virus mr-1"></i> Requires strict adherence to Universal Infection Control & Biosafety Standards.
+                    </div>
+                </div>
+
+                <!-- Resource & Asset Responsibility -->
+                <div class="glass-card rounded-3xl p-6 space-y-4">
+                    <h4 class="font-bold text-base text-emerald-400 flex items-center gap-2">
+                        <i class="fa-solid fa-boxes-stacked"></i> <span id="spec-assets-title">3.6.6. ሀብትና ንብረት ተጠያቂነት</span>
+                    </h4>
+                    <div class="space-y-2">
+                        <p class="text-xs text-slate-300">የመሳሪያዎች ዓይነት፡ ጠረጴዛ፣ ወንበር፣ ዴስክቶፕ ኮምፒውተር፣ ላፕቶፕ፣ ቴርሞሜትር፣ ስቴቶስኮፕ፣ ኦቶስኮፕ እና ልዩ ልዩ ህክምና መሳሪያዎች።</p>
+                        <div class="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
+                            <span class="text-[11px] text-slate-400 block font-semibold">የንብረቶቹ ጠቅላላ ግምት value:</span>
+                            <span class="text-lg font-extrabold text-emerald-400">200,000 ETB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education & Experience Qualifications -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8">
+                <h3 class="text-lg font-bold text-brand-400 mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-user-graduate"></i> <span id="spec-qual-title">3.9. ትምህርትና የሥራ ልምድ (Qualifications Required)</span>
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs">
+                    <div class="p-4 bg-slate-900/40 rounded-2xl border border-slate-700/50 space-y-2">
+                        <span class="text-slate-400 uppercase font-bold tracking-wider block">የትምህርት ደረጃና ዓይነት (Degree)</span>
+                        <p class="text-sm font-extrabold text-slate-100">6 ዓመት የህክምናዶክተር ዲግሪ (6-Year Doctor of Medicine / MD)</p>
+                        <p class="text-slate-400">የሙያ መስክ፡ ህክምና (Medicine)</p>
+                    </div>
+                    <div class="p-4 bg-slate-900/40 rounded-2xl border border-slate-700/50 space-y-2">
+                        <span class="text-slate-400 uppercase font-bold tracking-wider block">የሥራ ልምድ (Direct Experience Required)</span>
+                        <p class="text-sm font-extrabold text-emerald-400">9 ዓመት ቀጥተኛ የህክምና ልምድ (9 Years Direct MD Practice)</p>
+                        <p class="text-slate-400">ለሥራ መደቡ የሚጠየቅ የጠቅላላ ህክምና ልምድ።</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 2: 3D FLASHCARD REVIEW MODE ================= -->
+        <section id="sec-flashcards" class="hidden space-y-8 animate-fadeIn">
+            <div class="glass-card rounded-3xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold">Interactive 3D Practice Flashcards</h2>
+                    <p class="text-xs text-slate-400">Click or tap any card to flip and master official duties, clinical triage rules, and operational research metrics.</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="renderFlashcards('all')" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-brand-600 text-white shadow-md hover:bg-brand-500 transition">All Cards</button>
+                    <button onclick="renderFlashcards('care')" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-brand-500 hover:text-white transition">Clinical Care</button>
+                    <button onclick="renderFlashcards('prevention')" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-brand-500 hover:text-white transition">Prevention & Public Health</button>
+                    <button onclick="renderFlashcards('research')" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 text-slate-300 hover:bg-brand-500 hover:text-white transition">Research & Training</button>
+                </div>
+            </div>
+
+            <!-- Flashcard Dynamic Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="flashcard-grid">
+                <!-- Javascript Populated Cards -->
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION 3: 100 MCQ COMPETENCY EXAM SIMULATOR ================= -->
+        <section id="sec-exam" class="hidden space-y-8 animate-fadeIn">
+            <!-- Exam Header Card -->
+            <div class="glass-card rounded-3xl p-6 sm:p-8 space-y-6">
+                <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-wide">Standardized 100-MCQ Assessment</span>
+                            <span id="quiz-progress-text" class="text-xs font-semibold text-slate-400">0 of 100 Answered</span>
+                        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold">
+                            GP IV Clinical & Operational Competency Exam
+                        </h2>
+                    </div>
+
+                    <!-- Category Filter & Control Buttons -->
+                    <div class="w-full lg:w-auto flex flex-wrap items-center gap-3">
+                        <select id="exam-cat-filter" onchange="filterExamCategory(this.value)" class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200 focus:ring-2 focus:ring-brand-500 outline-none">
+                            <option value="ALL">All Domains (100 Unique Questions)</option>
+                            <option value="Clinical Care & Management">Domain 1: Clinical Care, Surgery & Emergency (30 Qs)</option>
+                            <option value="Disease Prevention & PHEM">Domain 2: Public Health, Prevention & PHEM (25 Qs)</option>
+                            <option value="Research & Quality Improvement">Domain 3: Research & Quality Improvement (20 Qs)</option>
+                            <option value="Medical Education & Ethics">Domain 4: Education, Mentorship & Ethics (25 Qs)</option>
+                        </select>
+
+                        <button onclick="resetExamProgress()" class="px-4 py-2.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 text-xs font-bold transition flex items-center gap-2">
+                            <i class="fa-solid fa-rotate-left"></i> Reset Score
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Score Board Banner -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-slate-700/50">
+                    <div class="p-3 bg-slate-900/50 rounded-2xl border border-slate-700/50 text-center">
+                        <span class="text-slate-400 text-[10px] uppercase font-bold block">Current Score</span>
+                        <span class="text-xl font-extrabold text-brand-400" id="stat-score">0%</span>
+                    </div>
+                    <div class="p-3 bg-slate-900/50 rounded-2xl border border-slate-700/50 text-center">
+                        <span class="text-slate-400 text-[10px] uppercase font-bold block">Correct</span>
+                        <span class="text-xl font-extrabold text-emerald-400" id="stat-correct">0</span>
+                    </div>
+                    <div class="p-3 bg-slate-900/50 rounded-2xl border border-slate-700/50 text-center">
+                        <span class="text-slate-400 text-[10px] uppercase font-bold block">Incorrect</span>
+                        <span class="text-xl font-extrabold text-rose-400" id="stat-incorrect">0</span>
+                    </div>
+                    <div class="p-3 bg-slate-900/50 rounded-2xl border border-slate-700/50 text-center">
+                        <span class="text-slate-400 text-[10px] uppercase font-bold block">Remaining</span>
+                        <span class="text-xl font-extrabold text-amber-400" id="stat-remaining">100</span>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-full bg-slate-800 rounded-full h-2 overflow-hidden">
+                    <div id="exam-progress-bar" class="bg-gradient-to-r from-brand-500 to-emerald-400 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Question Interactive Container -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Question & Options Panel -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="glass-card rounded-3xl p-6 sm:p-8" id="question-card">
+                        <!-- JS renders single active question stem, options, and explanation -->
+                    </div>
+
+                    <!-- Question Navigation Controls -->
+                    <div class="flex items-center justify-between gap-4">
+                        <button onclick="prevQuestion()" class="px-5 py-3 rounded-2xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold transition flex items-center gap-2">
+                            <i class="fa-solid fa-arrow-left"></i> Previous
+                        </button>
+                        <button onclick="nextQuestion()" class="px-5 py-3 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold transition flex items-center gap-2 shadow-lg shadow-brand-500/20">
+                            Next Question <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 100-Question Matrix Drawer / Palette -->
+                <div class="glass-card rounded-3xl p-6 space-y-4 h-fit">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-sm text-slate-200">Question Palette Matrix</h4>
+                        <span class="text-[10px] text-brand-400 font-bold uppercase" id="palette-filter-count">100 Qs</span>
+                    </div>
+
+                    <!-- Scrollable Palette Buttons -->
+                    <div class="grid grid-cols-5 sm:grid-cols-10 lg:grid-cols-5 gap-2 max-h-[420px] overflow-y-auto pr-1" id="question-palette">
+                        <!-- JS renders 100 question status buttons -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        /* ================= 1. WORK EXPERIENCE CALCULATOR ================= */
+        // Hire date: Hamle 1, 2005 E.C. = July 8, 2013 G.C.
+        const HIRE_DATE_GC = new Date(2013, 6, 8); // July 8, 2013
+
+        function updateWorkExperience() {
+            const now = new Date();
+            let years = now.getFullYear() - HIRE_DATE_GC.getFullYear();
+            let months = now.getMonth() - HIRE_DATE_GC.getMonth();
+            let days = now.getDate() - HIRE_DATE_GC.getDate();
+
+            if (days < 0) {
+                months--;
+                const prevMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+                days += prevMonth.getDate();
+            }
+
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+
+            document.getElementById('exp-years').innerText = years;
+            document.getElementById('exp-months').innerText = months;
+            document.getElementById('exp-days').innerText = days;
+        }
+
+        /* ================= 2. BILINGUAL JOB DESCRIPTION DATA ================= */
+        const jobDescriptionAccordion = [
+            {
+                id: "res1",
+                icon: "fa-stethoscope",
+                title: {
+                    am: "ውጤት 1፡ ወደ ተቋሙ የሚመጡ ህሙማንን ማከም (Clinical Care & Management)",
+                    en: "Result 1: Outpatient, Emergency & Inpatient Medical Management"
+                },
+                duties: [
+                    {
+                        am: "የህሙማን ቅድመ ልዮታና መረጣ (Triaging) ይሰራል፤",
+                        en: "Executes preliminary emergency triage and patient prioritization."
+                    },
+                    {
+                        am: "አዋቂዎችንም ሆነ ህፃናትን (የውስጥ ደዌ፣ የማህፀንና ፅንስ፣ የህፃናት እና የቀዶ ህክምና ክፍሎችን በሚያካትት መልኩ) በድገተኛና በተመላላሽ ክፍል እና በተኝቶ ህክምና ተቀብሎ የህክምና ታሪክ ቃለመጠይቅና የአካል ምርመራ ያደርጋል፤ የላቦራቶሪ ምርመራዎችን ያዛል፤",
+                        en: "Conducts comprehensive history taking, physical examination, and diagnostic test ordering for adult and pediatric outpatients, emergency cases, and inpatients across internal medicine, OB/GYN, pediatrics, and surgery."
+                    },
+                    {
+                        am: "በምርመራ ውጤት ላይ በመመስረት አስፈላጊውን ህክምና ይሰጣል፤",
+                        en: "Formulates accurate diagnoses and administers definitive therapeutic interventions based on clinical and laboratory findings."
+                    },
+                    {
+                        am: "በመመሪያ የተፈቀዱ የማህፀን አገልግሎት ይሰጣል፤",
+                        en: "Provides authorized obstetric and gynecological clinical services in accordance with official national protocols."
+                    },
+                    {
+                        am: "ማንኛውንም የበሽታኛውን ግኝትና መረጃዎች በካርድ ላይ ያሰፍራል፤",
+                        en: "Meticulously documents patient clinical findings, medical history, orders, and therapeutic responses in official medical records."
+                    },
+                    {
+                        am: "ድገተኛና መካከለኛ የቀዶ ህክምና የሚያስፈልጋቸውን ህሙማን ይለያል፤",
+                        en: "Identifies surgical candidates requiring minor procedures or emergency operative surgical interventions."
+                    },
+                    {
+                        am: "ስለ ህሙማነው የሕመም ደረጃ እና ከቀዶ ህክምናው ጋር ተያይዘው ሊመጡ የሚችሉ የጎንዮሽ ጉዳቶችን ለታካሚው ወይም ለቅርብ ተጠሪው ያስረዳል፤",
+                        en: "Provides detailed counseling to patients or legal guardians regarding diagnosis severity, surgical risks, potential complications, and prognosis."
+                    },
+                    {
+                        am: "ለመካከለኛና ድገተኛ ቀዶ ህክምና ታማሚዎች ቅድመ-ቀዶ ህክምና ምርመራና የህክምና ትዕዛዝ ይሰጣል፤ ተተግባሪነታቸውንም ይከታተላል፤ ለቀዶ ህክምናው እንዲዘጋጅ ያደርጋል፤ ህክምናውን ይሰጣል፤",
+                        en: "Orders preoperative evaluations, issues pre-op orders, ensures adequate surgical preparation, executes minor surgical interventions, and oversees intraoperative safety."
+                    },
+                    {
+                        am: "ድህረ-ቀዶ ህክምና ለህሙማን አስፈላጊውን ክትትል ያደርጋል፤ የምርመራና የህክምና ትዕዛዛትን ይሰጣል፤ ተተግባሪነታቸውንም ይከታተላል፤",
+                        en: "Manages postoperative care, orders post-op lab monitoring, prescribes medication regimens, and monitors surgical wound recovery."
+                    },
+                    {
+                        am: "የህሙማን የህመም ታሪክ፣ የምርመራ ውጤት እንዲሁም የቀዶ ህክምናውን ግኝት በካርድ ላይ ይመዘግባል፤",
+                        en: "Records complete post-surgical findings, operative notes, and treatment progress in official patient charts."
+                    },
+                    {
+                        am: "ሕሙማኑ ሲያገግሙ የጤና ሁኔታቸውን ገምግሞ መዝገብ ያበራታል፤ እንደአስፈላጊነቱ ለክትትልም ቀጠሮ ይሰጣል፤",
+                        en: "Evaluates recovery progress, completes discharge summaries, outlines post-discharge medications, and schedules follow-up clinic visits."
+                    },
+                    {
+                        am: "ከአቅም በላይ የሆኑት የሕመም ዓይነቶችን ለሚመለከተው ስፔሻሊስት በማማከር አስፈላጊውን ህክምና ይሰጣል እንደአስፈላጊነቱ ወደ ስፔሻሊስቱ አስተላልፋል፤",
+                        en: "Consults medical specialists for complex cases exceeding general practice scope and facilitates appropriate tertiary care referrals."
+                    },
+                    {
+                        am: "አገልግሎቱ ከተቋሙ አቅም በላይ የሆኑትን ለይቶ አገልግሎቱ ወደሚያገኙበት ተቋም አስተላልፋል፤",
+                        en: "Coordinates inter-facility transfers for specialized tertiary interventions when institutional resources are exceeded."
+                    },
+                    {
+                        am: "ተኝተው ለሚታከሙ ህሙማን የጤና ሁኔታ በየእለቱ ይከታተላል፤ አስፈላጊ ማስተካከያዎችን እንዲደረጉ ያደርጋል፤ ተግባራዊነታቸውን ይቆጣጠራል፤ ህክምና ሲጨርሱ እንዲወጡ ያደርጋል፤",
+                        en: "Performs daily morning and evening inpatient ward rounds, adjusts therapeutic management, oversees nursing execution, and discharges stabilized patients."
+                    },
+                    {
+                        am: "በህክምና ተቋም ውስጥ ህሙማን ከዚህ አለም በሞት ሲለዩ በምርመራ ያረጋግጣል፤ የሞት ሰርተፊኬትም ይሰጣል፤",
+                        en: "Formally confirms patient clinical death within the health facility and completes medico-legal cause of death certification."
+                    },
+                    {
+                        am: "የተለያዩ የህክምና የምስክር ወረቀትና ህግ ነክ መረጃዎችን ለሚመለከተው አካል ይሰጣል፤",
+                        en: "Issues official medical certificates, disability evaluations, and medico-legal clinical reports to authorized judicial or administrative bodies."
+                    }
+                ]
+            },
+            {
+                id: "res2",
+                icon: "fa-shield-halved",
+                title: {
+                    am: "ውጤት 2፡ የበሽታ መከላከልና ጤናን ማልማት (Prevention & Public Health)",
+                    en: "Result 2: Disease Prevention, Health Promotion & PHEM Response"
+                },
+                duties: [
+                    {
+                        am: "ለህሙማንና ለህሙማን ቤተሰብ ስለ ሕመሙና መወሰድ ስለሚገባው ጥንቃቄ አስፈላጊውን የምክር አገልግሎት ይሰጣል፤",
+                        en: "Delivers comprehensive patient and family counseling regarding disease pathology, dietary measures, and preventive health practices."
+                    },
+                    {
+                        am: "ህሙማንን በተመለከተ የሀኪሞች ውይይት ላይ ይሳተፋል፤ ሙያዊ ድጋፍና ምክር ይሰጣል፤",
+                        en: "Participates in peer clinical mortality and morbidity audits, multi-disciplinary case conferences, and technical expert consultations."
+                    },
+                    {
+                        am: "ተላላፊና ተላላፊ ያልሆኑ በሽታዎችን የመከላከልና የህብረተሰቡን ጤና የማልማት ስራዎችን ይሰራል፤",
+                        en: "Executes public health campaigns for communicable and non-communicable disease control and community health promotion."
+                    },
+                    {
+                        am: "ማንኛውም ወረርሽኝና ድገተኛ አደጋ በሚከሰትበት ጊዜ የምርመራና የህክምና አገልግሎት ይሰራል፤",
+                        en: "Serves as a frontline emergency responder during public health emergencies (PHEM), disease outbreaks, and mass trauma disasters."
+                    },
+                    {
+                        am: "የስራ ክንውን ሪፖርት ለሚመለከተው ክፍል ያቀርባል፤",
+                        en: "Compiles and submits periodic clinical performance, epidemiological, and HMIS/DHIS2 activity reports to supervisory units."
+                    }
+                ]
+            },
+            {
+                id: "res3",
+                icon: "fa-microscope",
+                title: {
+                    am: "ውጤት 3፡ ጥናትና ምርምር ማካሄድ (Operational Clinical Research)",
+                    en: "Result 3: Clinical Research, Health Metrics & Peer Dissemination"
+                },
+                duties: [
+                    {
+                        am: "የምርምር ፕሮጀክት ፕሮፖዛሎችን ይቀርፃል፤ ሙያው ለሚመለከታቸው ሰዎች (በህብረተሰብ ጤና ስፔሻሊስቶች እና ስታቲስቲክስ ባለሙያዎች) ያስገመግማል፤ እንዲፀድቁ ያደርጋል፤",
+                        en: "Drafts operational clinical research protocols, collaborates with biostatisticians and public health specialists for review, and secures institutional ethics approval."
+                    },
+                    {
+                        am: "መረጃዎች እንዲሰበሰቡ ያደርጋል፤ ይሰበስባል፤ ይተነትናል፤",
+                        en: "Coordinates operational clinical data collection, database entry, statistical analysis, and epidemiological interpretation."
+                    },
+                    {
+                        am: "የመጨረሻ የጥናትና ምርምር ሰነድ ያዘጋጃል፤ የተለያዩ አዳዲስ አሰራሮችንና እውቀቶችን ይቀምራል፤ ውጤቱን ለዘርፉ ባለሙያዎችና ፖሊሲ አውጪዎች ያቀርባል፤ የዘርፉን አገልግሎት ጥራት ለማሻሻል ከሚመለከታቸው ጋር ይሰራል፤",
+                        en: "Publishes final clinical research manuscripts, synthesizes evidence-based healthcare innovations, presents findings to policymakers, and works to improve healthcare delivery quality."
+                    },
+                    {
+                        am: "በሀገሪቱ ውስጥ በሚደረጉ ታላላቅ ሳይንሳዊ ጉባኤዎችና የህክምና ማህበር ላይ ግኝቶችን ያቀርባል፤",
+                        en: "Presents empirical clinical research findings at national medical association conferences, symposia, and scientific forums."
+                    },
+                    {
+                        am: "በጥናትና ምርምር ውጤት መሰረት በማድረግ የአሰራር ስልቶችን ይመልሳል፤ ተግባራዊ ያደርጋል፤",
+                        en: "Translates research recommendations into updated hospital standard operating procedures (SOPs) and clinical practice guidelines."
+                    },
+                    {
+                        am: "ልዩ ልዩ ምርጥ ተሞክሮዎችን በመፈለግ አማራጮችን በማቅረብ ይሰራል፤ ተሞክሮ ያሰራጫል፤",
+                        en: "Identifies clinical best practices, evaluates alternative interventions, and scales up quality improvement models across facility departments."
+                    }
+                ]
+            },
+            {
+                id: "res4",
+                icon: "fa-chalkboard-user",
+                title: {
+                    am: "ውጤት 4፡ ትምህርትና ሥልጠና ማዘጋጀትና መስጠት (Staff Training & Mentorship)",
+                    en: "Result 4: Curricula Development, Medical Mentorship & CME Delivery"
+                },
+                duties: [
+                    {
+                        am: "የስልጠና ፍላጎት ይለያል፤ ፍላጎት ያሰበስባል፤",
+                        en: "Conducts systematic Training Needs Assessments (TNA) for health center and hospital clinical personnel."
+                    },
+                    {
+                        am: "በጤናና ጤና ነክ ጉዳዮች ላይ ለተለያዩ የጤና ባለሙያዎች ትምህርትና ስልጠና ለመስጠት የሚያስተምሪያ ቁሳቁሶችን ያዘጋጃል፤ ይገመግማል፤ በአዲስ መልክ ያስተካክላል፤",
+                        en: "Develops, reviews, and updates continuous medical education (CME) training modules and clinical teaching materials."
+                    },
+                    {
+                        am: "የእውቀትና የክህሎት ክፍተት በመለየት ለጀማሪዎችና ለሚመለከታቸው አካላት የተለያዩ የአጭር ጊዜ ስልጠናዎችን በማዘጋጀት ይሰጣል፤",
+                        en: "Designs and conducts short-term competency training workshops to bridge clinical knowledge and practical skill gaps for junior staff."
+                    },
+                    {
+                        am: "በዘርፉ የተሰማሩ ባለሙያዎች ውስብስብ በሆኑ የጤና ችግሮች ዙሪያ የመለያ ዘዴዎች፣ መንስኤዎችና መፍትሄዎቻቸው ላይ ሙያዊ ድጋፍ ያደርጋል፤",
+                        en: "Provides technical mentorship and expert guidance on complex clinical diagnostic procedures and therapeutic decision-making."
+                    },
+                    {
+                        am: "በጠቅላላ ህክምና ጉዳዮች ላይ በሌሎች ሀገራት ከሚገኙ አቻ ባለሙያዎች ጋር በምርምር ስራዎችና እውቀት ሽግግር በጋራ ይሰራል፤ በሀገር ውስጥ የሚሰራውን ህክምና አለም አቀፍ ደረጃን የጠበቀ እንዲሆን ያደርጋል፤",
+                        en: "Engages in international medical knowledge exchanges and collaborative research to align domestic medical practices with global standards."
+                    },
+                    {
+                        am: "ለተግባር ልምምድ ወደ ተቋሙ የመጡትን ተማሪዎች ያሰለጥናል፤",
+                        en: "Supervises and mentors medical interns, resident officers, and clinical students during ward attachments and practical rotations."
+                    },
+                    {
+                        am: "የሚሰጡ ስልጠናዎች ያመጡትን ለውጥ ጥናት ያደርጋል፤ ይከታተላል፤",
+                        en: "Evaluates training outcomes, evaluates post-training workplace behavioral improvements, and monitors continuous medical care enhancements."
+                    }
+                ]
+            }
+        ];
+
+        /* ================= 3. 3D FLASHCARD DATASET ================= */
+        const flashcardData = [
+            {
+                category: "care",
+                front: "Emergency Triage: Red Code (Priority 1)",
+                back: "Immediate life-threatening conditions requiring instant resuscitation (e.g., airway obstruction, tension pneumothorax, severe shock, eclampsia).",
+                am: "አስቸኳይና ለሕይወት አደገኛ ሁኔታዎች - ወዲያውኑ ህክምና የሚሹ (ለምሳሌ፡ የመተንፈሻ አካል መደፈን፣ ድንገተኛ ደም መፍሰስ)።"
+            },
+            {
+                category: "care",
+                front: "Pritchard Regimen for Eclampsia",
+                back: "Loading dose: 4g IV (20% sol over 5 min) + 10g IM (50% sol, 5g in each buttock). Maintenance: 5g IM every 4 hours.",
+                am: "የእርግዝና ተشنክሮ (Eclampsia) መድኃኒት አሰጣጥ መጠን - 4ግ በደም ስር + 10ግ በጡንቻ።"
+            },
+            {
+                category: "prevention",
+                front: "PHEM Immediately Reportable Diseases",
+                back: "Diseases requiring notification within 24 hours: Cholera, AFP/Polio, Measles, Rabies, Neonatal Tetanus, Maternal Death, Viral Hemorrhagic Fevers.",
+                am: "በ24 ሰዓት ውስጥ ለቀጠናው ጤና መሪያ ቤት ሪፖርት መደረግ ያለባቸው ተላላፊ በሽታዎች።"
+            },
+            {
+                category: "prevention",
+                front: "Post-Exposure Prophylaxis (PEP) Timeline",
+                back: "Initiate antiretroviral PEP within 2 hours of accidental needle-stick/HIV exposure, and strictly no later than 72 hours, continuing for 28 days.",
+                am: "የኤች.አይ.ቪ ኤክስፖዠር መከላከል መድኃኒት በ2 ሰዓት ውስጥ (ቢያንስ በ72 ሰዓት ሳይሞላ) መጀመር አለበት።"
+            },
+            {
+                category: "research",
+                front: "Gold Standard Diagnostic Accuracy Metric",
+                back: "Sensitivity measures True Positive Rate; Specificity measures True Negative Rate. PPV increases directly with higher population disease prevalence.",
+                am: "የምርመራ ትክክለኛነት መለኪያ - ሰንሲቲቪቲ (ህመሙ ያለባቸውን መለየት) እና ስፔሲፊሲቲ (ህመሙ የሌለባቸውን መለየት)።"
+            },
+            {
+                category: "research",
+                front: "PDSA Quality Improvement Cycle",
+                back: "Plan (target setting & strategy), Do (small-scale trial execution), Study (data audit & performance analysis), Act (institutional policy adoption).",
+                am: "የአገልግሎት ጥራት ማሻሻያ ሂደት - ማቀድ፣ መተግበር፣ ማጠናት እና ቋሚ አሰራር ማድረግ።"
+            }
+        ];
+
+        /* ================= 4. 100 UNIQUE COMPETITIVE MCQS ================= */
+        const examQuestions = [
+            // DOMAIN 1: CLINICAL CARE, EMERGENCY & SURGERY (30 Qs)
+            {
+                id: 1,
+                category: "Clinical Care & Management",
+                stem: "A 32-year-old Primigravida at 39 weeks gestation presents to the emergency room with severe head pain, epigastric tenderness, and visual blurring. BP is 175/110 mmHg, and urine dipstick reveals 3+ proteinuria. While setting up IV access, she suffers a generalized tonic-clonic seizure. What is the immediate recommended medical management protocol according to Ethiopian National Management Guidelines for Maternal Health?",
+                options: [
+                    "A) Administer Diazepam 10 mg IV push over 2 minutes, followed by immediate stat sublingual Nifedipine 20 mg",
+                    "B) Administer Magnesium Sulfate loading dose (4g IV as 20% solution + 10g IM as 50% solution), secure airway, and give Hydralazine 5 mg IV slowly",
+                    "C) Perform immediate emergency Cesarean Section before initiating anticonvulsant therapy to remove the cause of severe preeclampsia",
+                    "D) Administer Phenytoin 15 mg/kg IV infusion in Normal Saline over 30 minutes and monitor for cardiac arrhythmias"
+                ],
+                correct: 1,
+                explanation: "Magnesium Sulfate is the anticonvulsant of choice for Eclampsia (Pritchard regimen: 4g IV + 10g IM). Hydralazine or Nifedipine is used to control severe hypertension. Immediate delivery is necessary only after maternal stabilization. Diazepam and Phenytoin are second-line and inferior for eclamptic seizures."
+            },
+            {
+                id: 2,
+                category: "Clinical Care & Management",
+                stem: "A 45-year-old male victim of a motor vehicle collision arrives at the triage desk. He is dyspneic with an oxygen saturation of 84% on room air. Examination shows tracheal deviation to the right, absent breath sounds on the left, jugular venous distention, and hypotension (BP 80/50 mmHg). What is the most crucial next step?",
+                options: [
+                    "A) Send the patient for an immediate emergency upright chest X-ray to confirm pneumothorax",
+                    "B) Perform immediate needle decompression in the 2nd intercostal space at the midclavicular line (or 5th ICS anterior axillary line) on the left side before obtaining imaging",
+                    "C) Endotracheal intubation with positive pressure ventilation followed by left chest tube insertion",
+                    "D) Administer 2 liters of rapid IV normal saline bolus and reassess blood pressure"
+                ],
+                correct: 1,
+                explanation: "Tension pneumothorax is a clinical diagnosis requiring immediate needle decompression. Delaying for chest X-ray can cause cardiovascular collapse and cardiac arrest."
+            },
+            {
+                id: 3,
+                category: "Clinical Care & Management",
+                stem: "A 24-year-old male is brought to the OPD with a 24-hour history of severe periumbilical pain that migrated to the right lower quadrant, accompanied by low-grade fever, anorexia, and vomiting. On exam, McBurney's point tenderness, Rovsing's sign, and rebound tenderness are positive. Ultrasound is inconclusive. What is the most appropriate management path for a GP IV in a primary hospital setting?",
+                options: [
+                    "A) Discharge on oral Ciprofloxacin and Metronidazole with advice to return if pain worsens",
+                    "B) Keep NPO, start IV fluids, administer broad-spectrum antibiotics, and prepare the patient for emergency appendectomy",
+                    "C) Order an abdominal CT scan with oral and IV contrast and withhold all interventions until results return",
+                    "D) Perform a diagnostic peritoneal lavage (DPL) under local anesthesia"
+                ],
+                correct: 1,
+                explanation: "Acute appendicitis is a clinical diagnosis. In a primary hospital with inconclusive ultrasound, surgical exploration (appendectomy) after resuscitation is standard."
+            },
+            {
+                id: 4,
+                category: "Clinical Care & Management",
+                stem: "A 60-year-old diabetic patient presents with severe right foot pain, erythema, and purulent discharge. On palpation, there is soft tissue crepitus extending to the mid-calf. The patient is febrile (38.9°C), tachycardic (118 bpm), and hypotensive (85/55 mmHg). What is the definitive initial surgical management required?",
+                options: [
+                    "A) Application of topical silver sulfadiazine dressings and high-dose oral Amoxicillin-Clavulanate",
+                    "B) Emergency surgical debridement and aggressive incision/drainage of necrotic tissue under broad-spectrum parenteral coverage",
+                    "C) Elective below-knee amputation scheduled after 5 days of culture-guided intravenous antibiotics",
+                    "D) Hyperbaric oxygen therapy combined with tight glycemic control"
+                ],
+                correct: 1,
+                explanation: "Soft tissue crepitus in a diabetic foot indicates gas gangrene / necrotizing fasciitis—a surgical emergency requiring immediate broad-spectrum IV antibiotics and emergent extensive surgical debridement."
+            },
+            {
+                id: 5,
+                category: "Clinical Care & Management",
+                stem: "A 2-year-old child presents with severe acute malnutrition (SAM) with bilateral pitting edema (kwashiorkor), lethargy, and a body temperature of 35.1°C. According to WHO/Ethiopian National Protocol for Management of SAM, which intervention must be strictly AVOIDED during the initial phase (Phase 1)?",
+                options: [
+                    "A) Re-warming using kangaroo mother care or thermal blankets",
+                    "B) Empirical parenteral/oral broad-spectrum antibiotic administration (e.g., Ampicillin + Gentamicin)",
+                    "C) Rapid high-volume IV fluid resuscitation using Normal Saline or Ringer's Lactate without signs of septic shock",
+                    "D) Administration of low-osmolar oral rehydration solution (ReSoMal) for dehydration"
+                ],
+                correct: 2,
+                explanation: "Children with SAM have compromised cardiac output and sodium overload; rapid high-volume IV fluids can easily trigger fatal acute heart failure and pulmonary edema."
+            },
+            {
+                id: 6,
+                category: "Clinical Care & Management",
+                stem: "A 28-year-old G3P2 mother at 38 weeks in active labor develops sudden severe bradycardia in the fetus (FHR 70 bpm for 6 minutes) following spontaneous rupture of membranes. Digital examination reveals a palpable, pulsating loop of umbilical cord in the vagina. What is the immediate clinical action?",
+                options: [
+                    "A) Encourage the mother to push forcefully with contractions to achieve rapid vaginal delivery",
+                    "B) Manually elevate the fetal presenting part off the umbilical cord with a gloved hand, place the mother in Trendelenburg/Knee-Chest position, and prepare for immediate emergency C-section",
+                    "C) Perform an immediate midline episiotomy and apply vacuum extraction regardless of station",
+                    "D) Administer IV Oxytocin infusion to accelerate stage 2 labor"
+                ],
+                correct: 1,
+                explanation: "Umbilical cord prolapse requires manual elevation of the presenting part to relieve cord compression while expediting emergency C-section."
+            },
+            {
+                id: 7,
+                category: "Clinical Care & Management",
+                stem: "A 50-year-old male with chronic hepatitis B presents with 3 episodes of massive hematemesis. On arrival, BP is 80/40 mmHg, HR is 130 bpm, and he is cold and clammy. What is the priority initial pharmacological agent to reduce portal venous pressure while preparing for resuscitation and endoscopy?",
+                options: [
+                    "A) Intravenous Bolus of Omeprazole 80 mg followed by continuous infusion",
+                    "B) Intravenous Octreotide (or Terlipressin) bolus followed by continuous IV infusion",
+                    "C) Oral Propranolol 40 mg via nasogastric tube",
+                    "D) Intravenous Tranexamic Acid 1 gram push"
+                ],
+                correct: 1,
+                explanation: "Vasoactive drugs (Octreotide/Terlipressin) induce splanchnic vasoconstriction, lowering portal pressure and reducing variceal bleeding."
+            },
+            {
+                id: 8,
+                category: "Clinical Care & Management",
+                stem: "A 30-year-old multiparous woman experiences heavy vaginal bleeding immediately following spontaneous vaginal delivery of a 4.2 kg infant. The placenta delivered completely. Fundal palpation reveals a soft, boggy uterus above the umbilicus. What is the first-line medical intervention?",
+                options: [
+                    "A) Immediate bimanual uterine compression and administration of 10 IU Oxytocin IM/IV",
+                    "B) Intrauterine packing with sterile gauze soaked in povidone-iodine",
+                    "C) Administration of Sublingual Misoprostol 800 mcg without uterine massage",
+                    "D) Transfer patient immediately to operating theater for emergency hysterectomy"
+                ],
+                correct: 0,
+                explanation: "Uterine atony is the leading cause of PPH. Immediate physical uterine massage combined with first-line uterotonics (Oxytocin) is the initial gold-standard intervention."
+            },
+            {
+                id: 9,
+                category: "Clinical Care & Management",
+                stem: "A 19-year-old male presents following a motor vehicle accident with right thigh pain and deformity. X-rays reveal a closed mid-shaft femur fracture. During examination, the GP IV notes blood at the external urethral meatus, a high-riding prostate on digital rectal exam, and perineal ecchymosis. What intervention is CONTRAINDICATED?",
+                options: [
+                    "A) Retrograde urethrogram (RUG)",
+                    "B) Blind urethral catheterization with a standard Foley catheter",
+                    "C) Suprapubic catheter placement",
+                    "D) Application of a Thomas splint to the right lower extremity"
+                ],
+                correct: 1,
+                explanation: "Blood at the meatus, perineal hematoma, and high-riding prostate suggest posterior urethral disruption. Blind Foley catheter insertion risks converting a partial tear into a complete transaction."
+            },
+            {
+                id: 10,
+                category: "Clinical Care & Management",
+                stem: "A 40-year-old female presents with acute severe right upper quadrant colicky pain radiating to the right scapula, accompanied by fever (38.5°C) and jaundice. Murphy's sign is positive. Laboratory tests show total bilirubin 4.5 mg/dL, direct bilirubin 3.8 mg/dL, and elevated alkaline phosphatase. What is the primary diagnosis?",
+                options: [
+                    "A) Acute Uncomplicated Cholecystitis",
+                    "B) Acute Ascending Cholangitis (Charcot's Triad)",
+                    "C) Acute Viral Hepatitis A",
+                    "D) Acute Perforated Peptic Ulcer"
+                ],
+                correct: 1,
+                explanation: "Fever, right upper quadrant pain, and jaundice constitute Charcot's Triad, diagnostic of Acute Cholangitis (biliary infection behind an obstruction)."
+            },
+            {
+                id: 11,
+                category: "Clinical Care & Management",
+                stem: "A 35-year-old HIV-positive patient (CD4 45 cells/µL) presents with a 3-week history of worsening headache, low-grade fever, photophobia, and neck stiffness. Lumbar puncture demonstrates elevated opening pressure (>300 mm H2O), clear CSF, elevated protein, low glucose, and positive India Ink staining. What is the initial induction treatment of choice?",
+                options: [
+                    "A) High-dose oral Fluconazole 1200 mg daily for 10 weeks",
+                    "B) Intravenous Amphotericin B deoxycholate (0.7–1.0 mg/kg/day) plus Flucytosine (or oral Fluconazole) for 2 weeks",
+                    "C) Empiric anti-TB regimen (RHZE) plus Dexamethasone",
+                    "D) High-dose IV Acyclovir 10 mg/kg 8-hourly"
+                ],
+                correct: 1,
+                explanation: "Cryptococcal meningitis in advanced HIV requires induction therapy with Amphotericin B plus Flucytosine/Fluconazole for 2 weeks."
+            },
+            {
+                id: 12,
+                category: "Clinical Care & Management",
+                stem: "During a minor surgical procedures clinic, a GP IV performs an excision of a large sebaceous cyst on a patient's back under local anesthesia using 2% Lidocaine with Epinephrine. Minutes after injection, the patient complains of perioral numbness, tinnitus, metallic taste, and dizziness. BP is 150/90, HR 110 bpm. What is the underlying pathophysiological cause?",
+                options: [
+                    "A) Anaphylactic reaction to Epinephrine",
+                    "B) Systemic Local Anesthetic Toxicity (LAST) secondary to rapid intravascular absorption or accidental injection",
+                    "C) Acute Vasovagal Syncope episode",
+                    "D) Hyperventilation syndrome induced panic attack"
+                ],
+                correct: 1,
+                explanation: "Tinnitus, metallic taste, perioral numbness, and CNS agitation are hallmark early signs of Local Anesthetic Systemic Toxicity (LAST)."
+            },
+            {
+                id: 13,
+                category: "Clinical Care & Management",
+                stem: "A 12-year-old boy presents with sudden onset of severe left testicular pain and swelling that woke him from sleep 3 hours ago. On exam, the left testicle is high-riding, tender, and horizontally oriented. The cremasteric reflex is absent on the left. What is the mandatory immediate action?",
+                options: [
+                    "A) Order a Doppler scrotal ultrasound and await formal radiologist report next morning",
+                    "B) Prescribe oral Ceftriaxone and Doxycycline for acute epididymitis",
+                    "C) Immediate manual detorsion attempt (outward rotation) followed by emergency surgical exploration and bilateral orchiopexy within 6 hours",
+                    "D) Apply ice packs, scrotal support, and re-evaluate in 24 hours"
+                ],
+                correct: 2,
+                explanation: "Testicular torsion is a surgical emergency with a 6-hour ischemia window for testicular salvage. Absence of cremasteric reflex strongly supports torsion."
+            },
+            {
+                id: 14,
+                category: "Clinical Care & Management",
+                stem: "A 25-year-old female presents to the emergency room with acute asthma exacerbation. Despite 3 continuous nebulizations of Salbutamol and Ipratropium Bromide plus IV Hydrocortisone, she remains distressed, unable to speak complete sentences, with silent chest on auscultation and PEFR <30% predicted. What is the next step in pharmacological management?",
+                options: [
+                    "A) Administer IV Magnesium Sulfate (1.2–2.0 g over 20 minutes)",
+                    "B) Administer oral Aminophylline loading dose",
+                    "C) Immediate sedation with Diazepam to reduce respiratory anxiety",
+                    "D) Administer subcutaneous Terbutaline injection"
+                ],
+                correct: 0,
+                explanation: "Intravenous Magnesium Sulfate causes smooth muscle relaxation and bronchodilation in severe or life-threatening acute asthma refractory to initial beta-agonists."
+            },
+            {
+                id: 15,
+                category: "Clinical Care & Management",
+                stem: "A 48-year-old male presents with acute epigastric pain radiating directly to the back, accompanied by nausea and persistent vomiting for 18 hours. Serum Lipase is 1,200 U/L (normal <60 U/L). What is the cornerstone of early management within the first 24 hours?",
+                options: [
+                    "A) Prophylactic administration of broad-spectrum IV Imipenem to prevent pancreatic necrosis infection",
+                    "B) Aggressive goal-directed IV fluid hydration with Ringer's Lactate (250–500 mL/hr) and adequate analgesia",
+                    "C) Immediate emergency exploratory laparotomy and pancreatic duct decompression",
+                    "D) Keeping strict NPO for 14 days and relying exclusively on total parenteral nutrition (TPN)"
+                ],
+                correct: 1,
+                explanation: "Early fluid resuscitation with isotonic crystalloids (Ringer's Lactate) is essential to maintain pancreatic microvascular perfusion and mitigate SIRS in acute pancreatitis."
+            },
+            {
+                id: 16,
+                category: "Clinical Care & Management",
+                stem: "A 22-year-old unconscious male is brought to the ED by friends after an overdose. His vitals: BP 90/60 mmHg, HR 52 bpm, RR 6 breaths/min, temperature 35.8°C. On exam, pupils are pinpoint (miotic) bilaterally. What is the immediate antidote and dose?",
+                options: [
+                    "A) Flumazenil 0.2 mg IV push",
+                    "B) Naloxone 0.4–2.0 mg IV/IM/ET push, repeated every 2–3 minutes as needed",
+                    "C) Atropine Sulfate 2 mg IV push",
+                    "D) N-Acetylcysteine 150 mg/kg IV infusion"
+                ],
+                correct: 1,
+                explanation: "The opioid toxidrome consists of respiratory depression, CNS depression, and miosis. Naloxone is a competitive opioid antagonist."
+            },
+            {
+                id: 17,
+                category: "Clinical Care & Management",
+                stem: "A 70-year-old male with long-standing hypertension presents with sudden onset left-sided hemiplegia and facial droop that started 2 hours ago. Non-contrast CT scan of the brain shows no evidence of intracranial hemorrhage. BP is 170/95 mmHg. What is the definitive management window for intravenous thrombolysis (rtPA)?",
+                options: [
+                    "A) Within 4.5 hours from symptom onset",
+                    "B) Within 12 hours from symptom onset",
+                    "C) Within 24 hours from symptom onset",
+                    "D) Only after 48 hours of observation"
+                ],
+                correct: 0,
+                explanation: "Intravenous recombinant tissue plasminogen activator (rtPA) must be initiated within 3 to 4.5 hours of symptom onset in acute ischemic stroke."
+            },
+            {
+                id: 18,
+                category: "Clinical Care & Management",
+                stem: "A 3-year-old child presents with high fever, barking cough, inspiratory stridor at rest, and intercostal retractions. What is the primary medical intervention for severe croup (Laryngotracheobronchitis)?",
+                options: [
+                    "A) Administer IV Ceftriaxone and oral Azithromycin",
+                    "B) Administer Nebulized L-Epinephrine (Adrenaline) and a single dose of oral/IM Dexamethasone (0.6 mg/kg)",
+                    "C) Immediate perform emergency tracheostomy under local anesthesia",
+                    "D) Sedate the child with Chlorpromazine to relieve respiratory agitation"
+                ],
+                correct: 1,
+                explanation: "Nebulized epinephrine rapidly reduces mucosal edema via alpha-1 vasoconstriction, while Dexamethasone decreases airway inflammation in croup."
+            },
+            {
+                id: 19,
+                category: "Clinical Care & Management",
+                stem: "A 55-year-old female presents with severe chest pressure radiating to the left jaw for 1 hour. ECG reveals 3 mm ST-segment elevation in leads V1–V4. In a district primary hospital where Primary PCI (percutaneous coronary intervention) is unavailable within 120 minutes, what is the target door-to-needle time for IV fibrinolytic therapy (e.g., Streptokinase)?",
+                options: [
+                    "A) Within 30 minutes of presentation",
+                    "B) Within 120 minutes of presentation",
+                    "C) Within 6 hours of presentation",
+                    "D) Within 24 hours of presentation"
+                ],
+                correct: 0,
+                explanation: "For STEMI, if primary PCI cannot be performed within 120 minutes, fibrinolytic therapy (Streptokinase/Tenecteplase) should be administered with a door-to-needle target time of <30 minutes."
+            },
+            {
+                id: 20,
+                category: "Clinical Care & Management",
+                stem: "A 29-year-old female G1P0 at 10 weeks gestation presents with acute lower abdominal cramping and heavy vaginal bleeding with passage of tissue fragments. Vaginal examination reveals an open cervical os with dark blood clots and tissue in the cervical canal. What is the clinical diagnosis?",
+                options: [
+                    "A) Threatened Abortion",
+                    "B) Inevitable / Incomplete Abortion",
+                    "C) Complete Abortion",
+                    "D) Missed Abortion"
+                ],
+                correct: 1,
+                explanation: "Bleeding with passage of tissue and an open cervical os indicates an incomplete or inevitable abortion requiring surgical evacuation (Manual Vacuum Aspiration - MVA) or medical management."
+            },
+            {
+                id: 21,
+                category: "Clinical Care & Management",
+                stem: "A 42-year-old male develops sudden severe dyspnea and pleuritic chest pain on hospital day 4 following open reduction and internal fixation (ORIF) of a tibial fracture. Oxygen saturation drops to 86%. D-Dimer is markedly elevated. What is the diagnostic gold standard investigation?",
+                options: [
+                    "A) Transthoracic Echocardiogram (TTE)",
+                    "B) Computed Tomography Pulmonary Angiography (CTPA)",
+                    "C) Electrocardiogram (ECG)",
+                    "D) Portable Bedside Chest X-Ray"
+                ],
+                correct: 1,
+                explanation: "CT Pulmonary Angiography (CTPA) is the imaging modality of choice and gold standard for confirming Pulmonary Embolism (PE)."
+            },
+            {
+                id: 22,
+                category: "Clinical Care & Management",
+                stem: "A 16-year-old diabetic male is brought in confused, deep breathing (Kussmaul respiration), and fruity odor on his breath. Blood glucose is 450 mg/dL, arterial pH is 7.15, serum bicarbonate is 10 mEq/L, and urine ketones are 3+. What is the initial fluid replacement of choice?",
+                options: [
+                    "A) 5% Dextrose in Water at 500 mL/hr",
+                    "B) 0.9% Normal Saline (1000 mL in the 1st hour)",
+                    "C) Rapid IV bolus of Sodium Bicarbonate 100 mEq",
+                    "D) 0.45% Half-Normal Saline with 40 mEq Potassium Chloride bolus"
+                ],
+                correct: 1,
+                explanation: "Initial fluid resuscitation in DKA requires 0.9% Normal Saline (1–1.5 L in the 1st hour) to restore intravascular volume before adding insulin or switching to dextrose/hypotonic fluids."
+            },
+            {
+                id: 23,
+                category: "Clinical Care & Management",
+                stem: "A 30-year-old female presents with high grade fever, rigors, flank pain, and costovertebral angle (CVA) tenderness. Urinalysis shows WBC casts and pyuria. What is the definitive initial empiric parenteral antibiotic therapy for acute pyelonephritis requiring hospitalization?",
+                options: [
+                    "A) Oral Nitrofurantoin 100 mg BID for 5 days",
+                    "B) Intravenous Ceftriaxone 1g daily (or IV Gentamicin)",
+                    "C) Oral Erythromycin 500 mg QID for 7 days",
+                    "D) Oral Metronidazole 500 mg TID for 10 days"
+                ],
+                correct: 1,
+                explanation: "Pyelonephritis with systemic signs requires IV Ceftriaxone or an aminoglycoside/fluoroquinolone."
+            },
+            {
+                id: 24,
+                category: "Clinical Care & Management",
+                stem: "During a routine inpatient ward round, a GP IV notes a 65-year-old postoperative patient who had an open cholecystectomy yesterday develop oliguria (urine output <0.3 mL/kg/hr for 6 hours). Serum creatinine has jumped from 0.8 mg/dL to 2.1 mg/dL. What is the most common cause of acute kidney injury (AKI) in this early postoperative setting?",
+                options: [
+                    "A) Acute Glomerulonephritis",
+                    "B) Prerenal Azotemia secondary to intravascular volume depletion or inadequate intraoperative fluid replacement",
+                    "C) Acute Interstitial Nephritis secondary to surgical skin prep",
+                    "D) Bilateral Ureteral Ligation"
+                ],
+                correct: 1,
+                explanation: "Prerenal hypoperfusion (hypovolemia, third-spacing, blood loss) is the leading cause of early postoperative oliguric AKI."
+            },
+            {
+                id: 25,
+                category: "Clinical Care & Management",
+                stem: "A 26-year-old male suffers deep second-degree and third-degree burns involving his entire chest, abdomen, and both anterior upper extremities. According to the Rule of Nines, what is the estimated Total Body Surface Area (TBSA) burned?",
+                options: [
+                    "A) 18%",
+                    "B) 27%",
+                    "C) 36%",
+                    "D) 45%"
+                ],
+                correct: 1,
+                explanation: "Chest (9%) + Abdomen (9%) + Anterior Right Arm (4.5%) + Anterior Left Arm (4.5%) = 27% TBSA."
+            },
+            {
+                id: 26,
+                category: "Clinical Care & Management",
+                stem: "Using the Parkland Formula (4 mL x kg x %TBSA) for fluid resuscitation in a 60 kg patient with 30% TBSA burns, what volume of Ringer's Lactate should be administered over the FIRST 8 HOURS?",
+                options: [
+                    "A) 1,800 mL",
+                    "B) 3,600 mL",
+                    "C) 7,200 mL",
+                    "D) 9,000 mL"
+                ],
+                correct: 1,
+                explanation: "Total 24-hr fluid = 4 mL x 60 kg x 30 = 7,200 mL. Half of this total volume (3,600 mL) must be administered in the first 8 hours."
+            },
+            {
+                id: 27,
+                category: "Clinical Care & Management",
+                stem: "A 5-year-old child presents with severe dehydration secondary to acute viral gastroenteritis. What is the Plan C fluid management protocol according to IMCI guidelines?",
+                options: [
+                    "A) Administer 100 mL/kg Ringer's Lactate IV (30 mL/kg in 1 hour, then 70 mL/kg in 5 hours)",
+                    "B) Administer 100 mL/kg Ringer's Lactate IV (30 mL/kg in 30 minutes, then 70 mL/kg in 2.5 hours)",
+                    "C) Administer ORS 75 mL/kg over 4 hours via nasogastric tube",
+                    "D) Administer 5% Dextrose bolus at 20 mL/kg over 10 minutes"
+                ],
+                correct: 1,
+                explanation: "For children aged 1–5 years with severe dehydration, Plan C fluid resuscitation is 30 mL/kg in 30 minutes, then 70 mL/kg in 2.5 hours."
+            },
+            {
+                id: 28,
+                category: "Clinical Care & Management",
+                stem: "A 38-year-old female presents with acute left-sided chest pain, fever, and productive cough with rust-colored sputum. On lung exam, bronchial breath sounds and dullness to percussion are present in the left lower lobe. What is the empirical outpatient treatment of choice for Community-Acquired Pneumonia (CAP) in a previously healthy adult according to national guidelines?",
+                options: [
+                    "A) Oral Ciprofloxacin 500 mg BID for 10 days",
+                    "B) Oral High-Dose Amoxicillin 1g TID (or Azithromycin/Doxycycline) for 5-7 days",
+                    "C) Oral Vancomycin 125 mg QID",
+                    "D) Parenteral Ceftazidime 2g IV TID"
+                ],
+                correct: 1,
+                explanation: "Streptococcus pneumoniae is the most common cause of typical CAP. High-dose Amoxicillin is first-line empirical therapy in outpatients without comorbidities."
+            },
+            {
+                id: 29,
+                category: "Clinical Care & Management",
+                stem: "A 22-year-old primiparous woman who delivered 4 days ago presents with fever (38.8°C), foul-smelling lochia, severe lower abdominal tenderness, and uterine subinvolution. What is the diagnosis and appropriate antibiotic coverage?",
+                options: [
+                    "A) Acute Cystitis; prescribe Nitrofurantoin",
+                    "B) Postpartum Endometritis; administer IV Ampicillin + Gentamicin + Metronidazole (or Clindamycin)",
+                    "C) Retained Placenta; perform MVA without antibiotic coverage",
+                    "D) Mastitis; prescribe Cloxacillin"
+                ],
+                correct: 1,
+                explanation: "Postpartum endometritis is a polymicrobial infection requiring broad triple-antibiotic coverage."
+            },
+            {
+                id: 30,
+                category: "Clinical Care & Management",
+                stem: "A 50-year-old male patient with known liver cirrhosis presents with fever, generalized abdominal pain, and worsening ascites. Paracentesis yields cloudy ascitic fluid. Neutrophil count in ascitic fluid is 350 cells/mm³. What is the diagnosis and immediate management?",
+                options: [
+                    "A) Tuberculous Peritonitis; start 4-drug RIFAFOUR regimen",
+                    "B) Spontaneous Bacterial Peritonitis (SBP); administer IV Cefotaxime (or Ceftriaxone) and IV Albumin",
+                    "C) Perforated Diverticulitis; schedule immediate exploratory laparotomy",
+                    "D) Malignant Ascites; perform therapeutic paracentesis without antibiotics"
+                ],
+                correct: 1,
+                explanation: "An ascitic fluid absolute neutrophil count (ANC) ≥250 cells/mm³ confirms Spontaneous Bacterial Peritonitis (SBP). Third-generation cephalosporins plus IV Albumin reduce mortality."
+            }
+        ];
+
+        // Fill remaining 70 questions dynamically across Domain 2, 3, and 4
+        const domain2Start = [
+            {
+                id: 31, category: "Disease Prevention & PHEM",
+                stem: "During a suspected Cholera outbreak in a refugee camp, a GP IV is deployed as Lead PHEM Officer. According to WHO/EPHI guidelines, what is the case definition for a suspected Cholera case in an area where an outbreak has ALREADY been declared?",
+                options: ["A) Any patient presenting with fever and blood-stained diarrhea", "B) Any person aged 2 years or older presenting with or dying from acute watery diarrhea", "C) Any infant under 6 months presenting with mild vomiting", "D) Only patients with stool cultures positive for Vibrio cholerae O1"],
+                correct: 1, explanation: "Once declared, the epidemiological case definition broadens to any person aged 2 years or older presenting with acute watery diarrhea."
+            },
+            {
+                id: 32, category: "Disease Prevention & PHEM",
+                stem: "Under EPHI PHEM system, which of the following diseases requires IMMEDIATELY REPORTABLE notification within 24 hours?",
+                options: ["A) Tuberculosis", "B) Rabies / Measles / Acute Flaccid Paralysis (Polio) / Maternal Death", "C) Uncomplicated Malaria", "D) Lymphatic Filariasis"],
+                correct: 1, explanation: "Measles, AFP/Polio, Rabies, Cholera, Neonatal Tetanus, and Maternal Deaths are immediately reportable within 24 hours."
+            },
+            {
+                id: 33, category: "Disease Prevention & PHEM",
+                stem: "A healthcare worker suffers an accidental needle-stick injury while drawing blood from an HIV-positive patient. What is the recommended timeframe for initiating Post-Exposure Prophylaxis (PEP)?",
+                options: ["A) Ideally within 2 hours, and no later than 72 hours post-exposure", "B) Between 72 hours and 7 days", "C) Only after seroconversion at 6 weeks", "D) PEP is not indicated"],
+                correct: 0, explanation: "PEP should be started as soon as possible, ideally within 2 hours and strictly within 72 hours, continuing for 28 days."
+            }
+        ];
+
+        // 100% Unique, Advanced & Competitive Medical MCQs (IDs 34 to 100)
+        const additionalQuestions = [
+            // --- DOMAIN 2: DISEASE PREVENTION & PHEM (34 to 55) ---
+            {
+                id: 34, category: "Disease Prevention & PHEM",
+                stem: "A 4-year-old child presents with sudden onset of asymmetric flaccid paralysis of the left leg without sensory loss. According to the WHO Acute Flaccid Paralysis (AFP) surveillance guidelines for polio eradication, what is the required stool specimen collection protocol?",
+                options: [
+                    "A) A single stool sample collected at the time of presentation",
+                    "B) Two stool specimens collected 24–48 hours apart within 14 days of paralysis onset",
+                    "C) Three serial stool samples collected over 3 consecutive mornings regardless of onset date",
+                    "D) Stool PCR sample collected only after rectal temperature normalizes"
+                ],
+                correct: 1,
+                explanation: "Adequate AFP surveillance requires 2 stool specimens collected 24 to 48 hours apart within 14 days of paralysis onset, arriving at the national laboratory under cold chain (+2°C to +8°C)."
+            },
+            {
+                id: 35, category: "Disease Prevention & PHEM",
+                stem: "In an outbreak setting of Neisseria meningitidis serogroup A meningitis, which close contacts require targeted chemoprophylaxis and what is the preferred first-line drug according to national public health protocols?",
+                options: [
+                    "A) All community members in the district; oral Amoxicillin 500 mg TID for 7 days",
+                    "B) Household and intimate contacts; single-dose oral Ciprofloxacin 500 mg (or IM Ceftriaxone 250 mg for pregnant women)",
+                    "C) Only symptomatic contacts; oral Doxycycline 100 mg BID for 5 days",
+                    "D) Healthcare personnel using standard PPE; oral Metronidazole 500 mg single dose"
+                ],
+                correct: 1,
+                explanation: "Chemoprophylaxis reduces nasopharyngeal carriage in high-risk close/household contacts. Single-dose Ciprofloxacin (500 mg) or single-dose Ceftriaxone IM (especially in pregnancy) is recommended."
+            },
+            {
+                id: 36, category: "Disease Prevention & PHEM",
+                stem: "According to the National Malaria Guidelines in Ethiopia, what is the first-line treatment for confirmed severe Plasmodium falciparum malaria in adults and children at primary hospitals?",
+                options: [
+                    "A) Oral Artemether-Lumefantrine (Coartem) 4 tablets BID for 3 days",
+                    "B) Intravenous or Intramuscular Artesunate (2.4 mg/kg at 0, 12, and 24 hours, then daily) for at least 24 hours until oral therapy is tolerated",
+                    "C) Intravenous Quinine dihydrochloride infusion over 4 hours diluted in 5% Dextrose",
+                    "D) Oral Chloroquine Phosphate 1000 mg stat followed by 500 mg daily for 3 days"
+                ],
+                correct: 1,
+                explanation: "Parenteral Artesunate (IV/IM) is significantly superior to Quinine in reducing mortality from severe P. falciparum malaria and is first-line."
+            },
+            {
+                id: 37, category: "Disease Prevention & PHEM",
+                stem: "A 28-year-old pregnant woman (G2P1 at 18 weeks gestation) tests positive for Plasmodium vivax malaria on blood film in a malaria-endemic zone. What is the recommended treatment regimen?",
+                options: [
+                    "A) Oral Chloroquine for 3 days followed by immediate 14-day Primaquine radical cure",
+                    "B) Oral Chloroquine for 3 days; Primaquine is strictly CONTRAINDICATED during pregnancy and must be postponed until after delivery",
+                    "C) Oral Artemether-Lumefantrine combined with Primaquine 0.25 mg/kg daily for 14 days",
+                    "D) Oral Quinine plus Clindamycin for 14 days followed by weekly Primaquine"
+                ],
+                correct: 1,
+                explanation: "Primaquine causes intravascular hemolysis in G6PD-deficient fetuses because it crosses the placenta. It is contraindicated during pregnancy; relapse prevention with Primaquine is delayed until postpartum."
+            },
+            {
+                id: 38, category: "Disease Prevention & PHEM",
+                stem: "A 35-year-old male is diagnosed with smear-positive Pulmonary Tuberculosis (PTB) with no previous history of anti-TB treatment. What is the standard intensive phase therapeutic regimen under national TB guidelines?",
+                options: [
+                    "A) 2 months of Rifampicin, Isoniazid, Pyrazinamide, and Ethambutol (2RHZE)",
+                    "B) 4 months of Rifampicin and Isoniazid (4RH)",
+                    "C) 2 months of Streptomycin, Isoniazid, and Rifampicin (2SHR)",
+                    "D) 6 months of levofloxacin, ethambutol, and pyrazinamide"
+                ],
+                correct: 0,
+                explanation: "Standard first-line regimen for new drug-susceptible TB cases consists of 2 months of RHZE (intensive phase) followed by 4 months of RH (continuation phase)."
+            },
+            {
+                id: 39, category: "Disease Prevention & PHEM",
+                stem: "Under the Expanded Program on Immunization (EPI) guidelines in Ethiopia, what is the required storage temperature range for heat-sensitive vaccines (e.g., OPV, Measles, Pentavalent) at health facility level?",
+                options: [
+                    "A) -20°C to -50°C in deep freezers",
+                    "B) +2°C to +8°C in main refrigerator compartments",
+                    "C) +15°C to +25°C at ambient room temperature",
+                    "D) 0°C exactly in direct contact with ice packs"
+                ],
+                correct: 1,
+                explanation: "At health facility and district vaccine stores, all EPI vaccines (including liquid and freeze-sensitive ones like Pentavalent/PCV) must be kept strictly between +2°C and +8°C."
+            },
+            {
+                id: 40, category: "Disease Prevention & PHEM",
+                stem: "A 22-year-old patient with pulmonary TB on 2RHZE/4RH presents with orange-red discoloration of urine, tears, and sweat. He is alarmed and asks if the medication should be stopped. What is the correct response?",
+                options: [
+                    "A) Immediately stop Pyrazinamide and order liver function tests",
+                    "B) Reassure the patient that orange-red discoloration of body fluids is a benign, expected side effect of Rifampicin and continue treatment",
+                    "C) Stop Isoniazid and add Pyridoxine (Vitamin B6) 100 mg daily",
+                    "D) Switch the regimen to second-line fluoroquinolones"
+                ],
+                correct: 1,
+                explanation: "Rifampicin imparts an orange-red coloration to urine, sweat, saliva, and tears. It is harmless and does not warrant drug discontinuation."
+            },
+            {
+                id: 41, category: "Disease Prevention & PHEM",
+                stem: "In an epidemiological investigation of a foodborne gastroenteritis outbreak following a community feast, 60 out of 100 people who ate raw meat became ill, while 10 out of 50 people who did not eat raw meat became ill. What is the Attack Rate among those who ate raw meat?",
+                options: [
+                    "A) 20%",
+                    "B) 40%",
+                    "C) 60%",
+                    "D) 80%"
+                ],
+                correct: 2,
+                explanation: "Attack Rate = (Number of new cases among exposed / Total number of exposed persons) x 100 = (60 / 100) x 100 = 60%."
+            },
+            {
+                id: 42, category: "Disease Prevention & PHEM",
+                stem: "A stray dog bites a 10-year-old boy on his right hand, producing deep, bleeding lacerations (Category III exposure). The dog escaped and cannot be observed. What is the immediate post-exposure prophylaxis (PEP) protocol for rabies?",
+                options: [
+                    "A) Thorough wound washing with soap and running water for 15 minutes, rabies vaccine schedule, and direct administration of Rabies Immunoglobulin (RIG) into and around the wound",
+                    "B) Immediate primary suturing of the laceration followed by oral Amoxicillin only",
+                    "C) Single administration of tetanus toxoid without rabies vaccine",
+                    "D) Topical alcohol application and 10 days of observation without vaccine"
+                ],
+                correct: 0,
+                explanation: "Category III rabies exposure (transdermal bites/scratches, contamination of mucous membranes) mandates immediate wound washing for 15 mins, infiltrated RIG into the wound, and a complete rabies vaccination series."
+            },
+            {
+                id: 43, category: "Disease Prevention & PHEM",
+                stem: "What is the primary indicator used by EPI managers to monitor vaccine delivery performance and service drop-out in a health district?",
+                options: [
+                    "A) BCG to HepB birth dose ratio",
+                    "B) Penta 1 to Penta 3 Dropout Rate [(Penta1 - Penta3) / Penta1 x 100]",
+                    "C) Total volume of diluent used per month",
+                    "D) Proportion of fully immunized children aged >5 years"
+                ],
+                correct: 1,
+                explanation: "Penta 1 vs. Penta 3 dropout rate is the key metric evaluating health system utilization and retention in routine infant immunization."
+            },
+            {
+                id: 44, category: "Disease Prevention & PHEM",
+                stem: "Which anti-tuberculosis medication is most notorious for causing peripheral neuropathy, and what concurrent supplement prevents this adverse reaction?",
+                options: [
+                    "A) Ethambutol; supplemented with Vitamin C",
+                    "B) Pyrazinamide; supplemented with Folic Acid",
+                    "C) Isoniazid (INH); supplemented with Pyridoxine (Vitamin B6)",
+                    "D) Rifampicin; supplemented with Vitamin K"
+                ],
+                correct: 2,
+                explanation: "Isoniazid inhibits pyridoxine phosphorylation, leading to peripheral neuropathy (especially in pregnant, malnourished, or HIV patients). Supplemental Pyridoxine (B6) prevents this toxicity."
+            },
+            {
+                id: 45, category: "Disease Prevention & PHEM",
+                stem: "A 25-year-old HIV-positive patient with a negative baseline TB symptom screen and no evidence of active TB is started on TPT (TB Preventive Therapy). What is the standard isoniazid regimen and duration under national guidelines?",
+                options: [
+                    "A) Isoniazid 300 mg daily for 6 months (6H) along with Pyridoxine",
+                    "B) Isoniazid 600 mg twice weekly for 2 months",
+                    "C) Rifampicin 600 mg daily for 12 months",
+                    "D) Ethambutol 800 mg daily for 3 months"
+                ],
+                correct: 0,
+                explanation: "Daily Isoniazid (300 mg) for 6 months (6H) plus Pyridoxine is the standard IPT regimen to prevent active TB reactivation in people living with HIV."
+            },
+            {
+                id: 46, category: "Disease Prevention & PHEM",
+                stem: "A 30-week pregnant woman in an endemic area attends her 2nd ANC visit. Under WHO/MOH guidelines for Malaria prevention, what is the protocol for Intermittent Preventive Treatment in pregnancy (IPTp)?",
+                options: [
+                    "A) Administration of Sulfadoxine-Pyrimethamine (SP) at each scheduled ANC visit starting in the 2nd trimester, spaced at least 1 month apart",
+                    "B) Weekly Chloroquine prophylaxis throughout all trimesters",
+                    "C) Daily oral Coartem from 20 weeks until delivery",
+                    "D) Single dose of Primaquine at 36 weeks"
+                ],
+                correct: 0,
+                explanation: "IPTp-SP involves administering full therapeutic doses of Sulfadoxine-Pyrimethamine at each ANC visit starting in the 2nd trimester (at least 1 month apart)."
+            },
+            {
+                id: 47, category: "Disease Prevention & PHEM",
+                stem: "What is the Maternal Mortality Ratio (MMR) metric defined as in public health surveillance?",
+                options: [
+                    "A) Maternal deaths per 1000 total reproductive-age women per year",
+                    "B) Maternal deaths per 100,000 live births during a specified time period",
+                    "C) Percentage of pregnant women who die during delivery",
+                    "D) Proportion of maternal deaths relative to total adult hospital mortality"
+                ],
+                correct: 1,
+                explanation: "MMR is expressed as maternal deaths per 100,000 live births, serving as a key indicator of obstetric care quality and health system performance."
+            },
+            {
+                id: 48, category: "Disease Prevention & PHEM",
+                stem: "In hospital infection prevention and control (IPC), what concentration of Sodium Hypochlorite (Bleach) solution is recommended for decontamination of large blood or body fluid spills on hospital floors?",
+                options: [
+                    "A) 0.05%",
+                    "B) 0.1%",
+                    "C) 0.5%",
+                    "D) 5.0%"
+                ],
+                correct: 2,
+                explanation: "A 0.5% chlorine solution (5,000 ppm) is required for decontaminating organic spills (blood, vomit, feces), whereas 0.1% is used for general environmental wiping."
+            },
+            {
+                id: 49, category: "Disease Prevention & PHEM",
+                stem: "A 18-year-old female presents with primary syphilis (painless genital chancre with regional lymphadenopathy). What is the first-line treatment of choice?",
+                options: [
+                    "A) Single dose of Benzathine Penicillin G 2.4 million units IM",
+                    "B) Oral Doxycycline 100 mg BID for 30 days",
+                    "C) Intravenous Penicillin G 4 million units 4-hourly for 14 days",
+                    "D) Single dose of oral Ciprofloxacin 500 mg"
+                ],
+                correct: 0,
+                explanation: "Early syphilis (primary, secondary, or early latent) is effectively treated with a single intramuscular injection of Benzathine Penicillin G 2.4 million units."
+            },
+            {
+                id: 50, category: "Disease Prevention & PHEM",
+                stem: "Which mosquito vector species is primarily responsible for transmitting Urban Yellow Fever, Dengue, and Chikungunya in tropical outbreaks?",
+                options: [
+                    "A) Anopheles arabiensis",
+                    "B) Culex quinquefasciatus",
+                    "C) Aedes aegypti",
+                    "D) Mansonia uniformis"
+                ],
+                correct: 2,
+                explanation: "Aedes aegypti is the primary day-biting vector transmitting arboviruses such as Dengue, Chikungunya, Yellow Fever, and Zika."
+            },
+            {
+                id: 51, category: "Disease Prevention & PHEM",
+                stem: "What is the recommended timing for administering the single birth dose of Hepatitis B vaccine to newborns under national guidelines?",
+                options: [
+                    "A) Within 24 hours of birth (or as soon as possible)",
+                    "B) At 6 weeks of age together with Pentavalent 1",
+                    "C) At 9 months with Measles vaccine",
+                    "D) Only if the mother is confirmed HBsAg positive"
+                ],
+                correct: 0,
+                explanation: "HepB birth dose within 24 hours of birth prevents perinatal mother-to-child transmission of Hepatitis B virus."
+            },
+            {
+                id: 52, category: "Disease Prevention & PHEM",
+                stem: "Which public health strategy is most effective in preventing endemic Goiter and Congenital Hypothyroidism at the population level?",
+                options: [
+                    "A) Mass distribution of oral Levothyroxine tablets to school children",
+                    "B) Universal Salt Iodization (USI) requiring ≥30 ppm iodine in household salt",
+                    "C) Screening all adult women with serum TSH testing annually",
+                    "D) Direct water supply fluoridation"
+                ],
+                correct: 1,
+                explanation: "Universal Salt Iodization (USI) is the most cost-effective public health measure to eliminate Iodine Deficiency Disorders (IDD)."
+            },
+            {
+                id: 53, category: "Disease Prevention & PHEM",
+                stem: "In Maternal and Perinatal Death Surveillance and Response (MPDSR), what is the key primary purpose of conducting facility-based death reviews?",
+                options: [
+                    "A) To assign legal blame and penalize attending clinical personnel",
+                    "B) To identify modifiable health system factors and clinical errors to prevent future deaths",
+                    "C) To calculate hospital revenue loss from maternal mortality",
+                    "D) To publish hospital morbidity rankings in national news"
+                ],
+                correct: 1,
+                explanation: "MPDSR is a no-blame quality-improvement system designed to analyze root causes and implement action plans to eliminate preventable maternal/perinatal deaths."
+            },
+            {
+                id: 54, category: "Disease Prevention & PHEM",
+                stem: "A 4-year-old child presents with a 3-day history of high fever, coryza, cough, conjunctivitis, and small white papules on an erythematous base on the buccal mucosa opposite the lower molars. What are these buccal lesions called?",
+                options: [
+                    "A) Forchheimer spots",
+                    "B) Koplik spots",
+                    "C) Nagayama spots",
+                    "D) Epstein pearls"
+                ],
+                correct: 1,
+                explanation: "Koplik spots are pathognomonic prodromal lesions seen in Measles (Rubeola) 1–2 days prior to the onset of the maculopapular rash."
+            },
+            {
+                id: 55, category: "Disease Prevention & PHEM",
+                stem: "To evaluate non-polio AFP surveillance quality in a health zone, what is the minimum target Non-Polio AFP rate per 100,000 population under 15 years of age?",
+                options: [
+                    "A) At least 1 per 100,000",
+                    "B) At least 2 per 100,000",
+                    "C) At least 5 per 100,000",
+                    "D) At least 10 per 100,000"
+                ],
+                correct: 1,
+                explanation: "A sensitive surveillance system must detect at least 2 cases of non-polio AFP per 100,000 children under 15 years old annually."
+            },
+
+            // --- DOMAIN 3: RESEARCH & QUALITY IMPROVEMENT (56 to 75) ---
+            {
+                id: 56, category: "Research & Quality Improvement",
+                stem: "A GP IV designs an epidemiological study to evaluate the association between occupational pesticide exposure and developer of non-Hodgkin lymphoma. Individuals with lymphoma are recruited and matched with healthy controls, then past exposure histories are compared. What study design is this?",
+                options: [
+                    "A) Prospective Cohort Study",
+                    "B) Case-Control Study",
+                    "C) Randomized Controlled Trial",
+                    "D) Cross-Sectional Survey"
+                ],
+                correct: 1,
+                explanation: "Case-control studies select subjects based on outcome status (cases vs controls) and look backward (retrospectively) to assess exposure frequencies."
+            },
+            {
+                id: 57, category: "Research & Quality Improvement",
+                stem: "In clinical research, what metric measures the odds of an outcome given a specific exposure in a case-control study?",
+                options: [
+                    "A) Relative Risk (Risk Ratio)",
+                    "B) Odds Ratio (OR)",
+                    "C) Attributable Risk",
+                    "D) Absolute Risk Reduction"
+                ],
+                correct: 1,
+                explanation: "Case-control studies cannot directly calculate incidence or Relative Risk; they report Odds Ratio (OR) as the estimate of relative risk."
+            },
+            {
+                id: 58, category: "Research & Quality Improvement",
+                stem: "A research proposal aims to evaluate the incidence of surgical site infections (SSI) over 2 years by following 500 post-laparotomy patients from hospital discharge onward. What study design is being utilized?",
+                options: [
+                    "A) Prospective Cohort Study",
+                    "B) Retrospective Case-Control Study",
+                    "C) Ecological Study",
+                    "D) Qualitative Grounded Theory Study"
+                ],
+                correct: 0,
+                explanation: "Cohort studies select disease-free subjects based on exposure status and follow them prospectively over time to calculate disease incidence."
+            },
+            {
+                id: 59, category: "Research & Quality Improvement",
+                stem: "In biostatistics, what does a p-value of <0.05 signify when comparing two clinical treatment arms?",
+                options: [
+                    "A) There is a 95% probability that the treatment is 100% clinically effective",
+                    "B) The probability of observing the obtained results (or more extreme) by random chance alone under the null hypothesis is less than 5%",
+                    "C) The clinical trial has zero risk of selection bias",
+                    "D) The power of the study is less than 5%"
+                ],
+                correct: 1,
+                explanation: "The p-value is the probability of obtaining test results at least as extreme as the observed results under the assumption that the null hypothesis is true."
+            },
+            {
+                id: 60, category: "Research & Quality Improvement",
+                stem: "Which epidemiological study design provides the highest level of evidence for establishing direct causal efficacy of a novel therapeutic drug?",
+                options: [
+                    "A) Systematic Review of Expert Opinions",
+                    "B) Double-Blind Randomized Controlled Trial (RCT)",
+                    "C) National Retrospective Case Series",
+                    "D) Community Cross-Sectional Survey"
+                ],
+                correct: 1,
+                explanation: "Double-blind RCTs minimize confounding and selection bias through randomization and blinding, representing the gold standard for causal inference in therapeutics."
+            },
+            {
+                id: 61, category: "Research & Quality Improvement",
+                stem: "A hospital QI team notices a spike in postoperative wound infections. To identify the root causes (e.g., equipment, personnel, protocol, environment), which Quality Improvement tool is most appropriate?",
+                options: [
+                    "A) Fishbone (Ishikawa / Cause-and-Effect) Diagram",
+                    "B) Scatter Plot",
+                    "C) Kaplan-Meier Survival Curve",
+                    "D) Box-and-Whisker Plot"
+                ],
+                correct: 0,
+                explanation: "The Fishbone (Ishikawa) diagram categorizes potential causes of a problem (Manpower, Methods, Machines, Materials, Environment) to systematically pinpoint root causes."
+            },
+            {
+                id: 62, category: "Research & Quality Improvement",
+                stem: "In a diagnostic accuracy study evaluating a rapid point-of-care antigen test for malaria against microscopy, the test yields a Sensitivity of 95% and a Specificity of 90%. What does a 95% Sensitivity mean?",
+                options: [
+                    "A) 95% of patients who test negative are truly healthy",
+                    "B) 95% of patients who truly have malaria test positive (True Positive Rate)",
+                    "C) 95% of positive results are false positives",
+                    "D) The test accuracy increases by 95% in low prevalence areas"
+                ],
+                correct: 1,
+                explanation: "Sensitivity = True Positives / (True Positives + False Negatives). It reflects the ability of a test to correctly identify individuals who HAVE the disease."
+            },
+            {
+                id: 63, category: "Research & Quality Improvement",
+                stem: "When calculating Positive Predictive Value (PPV) of a diagnostic test in a clinic population, what happens to PPV as the prevalence of the target disease in that population INCREASES?",
+                options: [
+                    "A) PPV decreases significantly",
+                    "B) PPV increases",
+                    "C) PPV remains completely unaffected by disease prevalence",
+                    "D) PPV drops to zero"
+                ],
+                correct: 1,
+                explanation: "Unlike Sensitivity and Specificity (which are intrinsic test properties), PPV increases directly with higher disease prevalence in the tested population."
+            },
+            {
+                id: 64, category: "Research & Quality Improvement",
+                stem: "What is the primary function of an Institutional Review Board (IRB) or Institutional Ethics Committee (IEC) when evaluating a clinical research protocol?",
+                options: [
+                    "A) To ensure the financial profitability of the hospital",
+                    "B) To protect the rights, safety, dignity, and well-being of human research participants",
+                    "C) To guarantee that the study results are published in international impact-factor journals",
+                    "D) To enforce clinical productivity quotas for principal investigators"
+                ],
+                correct: 1,
+                explanation: "The principal mandate of an IRB/IEC is ethical oversight—ensuring participant safety, voluntary informed consent, and favorable risk-benefit ratios."
+            },
+            {
+                id: 65, category: "Research & Quality Improvement",
+                stem: "In sampling methodology, which technique ensures that every individual in the source population has a known, non-zero probability of being selected?",
+                options: [
+                    "A) Convenience Sampling",
+                    "B) Purposive Sampling",
+                    "C) Simple Random Sampling (Probability Sampling)",
+                    "D) Snowball Sampling"
+                ],
+                correct: 2,
+                explanation: "Simple random sampling is a probability sampling method that eliminates selection bias by giving every population unit an equal chance of selection."
+            },
+            {
+                id: 66, category: "Research & Quality Improvement",
+                stem: "A research team compares average blood pressure reductions between two independent patient groups receiving Drug X versus Drug Y. Assuming normally distributed data, which statistical test is most appropriate?",
+                options: [
+                    "A) Pearson's Chi-Square Test",
+                    "B) Independent Samples Student's t-test",
+                    "C) McNemar's Test",
+                    "D) Fisher's Exact Test"
+                ],
+                correct: 1,
+                explanation: "The independent samples t-test compares the means of a continuous variable (blood pressure) between two independent categorical groups."
+            },
+            {
+                id: 67, category: "Research & Quality Improvement",
+                stem: "Which statistical test is used to evaluate the association between two categorical variables (e.g., Smoking Status [Yes/No] vs. Lung Cancer Outcome [Yes/No])?",
+                options: [
+                    "A) Paired t-test",
+                    "B) Pearson's Chi-Square (χ²) Test",
+                    "C) One-Way ANOVA",
+                    "D) Linear Regression Analysis"
+                ],
+                correct: 1,
+                explanation: "The Chi-Square test of independence assesses whether an association exists between two categorical variables."
+            },
+            {
+                id: 68, category: "Research & Quality Improvement",
+                stem: "In research ethics, what historical international code established that voluntary informed consent of the human subject is absolutely essential following atrocities in medical experimentation?",
+                options: [
+                    "A) The Nuremberg Code (1947)",
+                    "B) The Belmont Report (1979)",
+                    "C) The Declaration of Helsinki (1964)",
+                    "D) The Universal Declaration of Human Rights"
+                ],
+                correct: 0,
+                explanation: "The Nuremberg Code (1947) laid down foundational ethical principles requiring voluntary, uncoerced human consent for medical experiments."
+            },
+            {
+                id: 69, category: "Research & Quality Improvement",
+                stem: "A hospital QI project aims to reduce emergency department triage-to-physician wait times using a 4-step iterative problem-solving methodology. What is this framework called?",
+                options: [
+                    "A) Plan-Do-Study-Act (PDSA) Cycle",
+                    "B) SWOT Analysis",
+                    "C) Delphi Consensus Method",
+                    "D) Likert Scaling"
+                ],
+                correct: 0,
+                explanation: "The PDSA cycle (Plan, Do, Study, Act) is the standard model for continuous quality improvement in healthcare settings."
+            },
+            {
+                id: 70, category: "Research & Quality Improvement",
+                stem: "In public health metrics, what does DALY (Disability-Adjusted Life Year) represent?",
+                options: [
+                    "A) The total financial cost of treating a chronic disease in a hospital",
+                    "B) The sum of Years of Life Lost (YLL) due to premature mortality and Years Lived with Disability (YLD)",
+                    "C) The average lifespan of patients with non-communicable diseases",
+                    "D) The percentage of bed occupancy in tertiary hospitals"
+                ],
+                correct: 1,
+                explanation: "One DALY equals one lost year of healthy life. DALYs quantify global disease burden by combining premature mortality (YLL) and morbidity/disability (YLD)."
+            },
+            {
+                id: 71, category: "Research & Quality Improvement",
+                stem: "In a statistical study, what is a Type I Error (α)?",
+                options: [
+                    "A) Failing to reject a false null hypothesis",
+                    "B) Rejecting a true null hypothesis (False Positive decision)",
+                    "C) Calculating incorrect standard deviations",
+                    "D) Using non-parametric tests on parametric data"
+                ],
+                correct: 1,
+                explanation: "Type I error occurs when researchers reject the null hypothesis when it is actually true (false alarm / claiming an effect exists when it doesn't)."
+            },
+            {
+                id: 72, category: "Research & Quality Improvement",
+                stem: "What is the primary purpose of applying the Pareto Principle (80/20 Rule) in healthcare hospital management audits?",
+                options: [
+                    "A) To prove that 80% of doctors cause 20% of medical errors",
+                    "B) To identify the vital few (20%) root causes that account for the vast majority (80%) of clinical problems or delays",
+                    "C) To spend 80% of the budget on pharmaceuticals and 20% on salaries",
+                    "D) To limit inpatient stays to a maximum of 80 hours"
+                ],
+                correct: 1,
+                explanation: "The Pareto Principle helps QI teams focus intervention efforts on the 20% of high-impact causes responsible for 80% of defects/delays."
+            },
+            {
+                id: 73, category: "Research & Quality Improvement",
+                stem: "A clinical trial reports a Relative Risk (RR) of 0.60 for stroke among patients taking a new antiplatelet drug compared to placebo. What is the Relative Risk Reduction (RRR)?",
+                options: [
+                    "A) 20%",
+                    "B) 40%",
+                    "C) 60%",
+                    "D) 80%"
+                ],
+                correct: 1,
+                explanation: "Relative Risk Reduction (RRR) = 1 - RR = 1 - 0.60 = 0.40 or 40%. The intervention reduces event risk by 40% relative to control."
+            },
+            {
+                id: 74, category: "Research & Quality Improvement",
+                stem: "In clinical epidemiology, what is Confounding?",
+                options: [
+                    "A) An error in data transcription during laboratory entry",
+                    "B) A distortion of the association between an exposure and an outcome by an extraneous variable associated with both",
+                    "C) Loss of follow-up subjects in a longitudinal trial",
+                    "D) Misclassification of disease status due to faulty diagnostic criteria"
+                ],
+                correct: 1,
+                explanation: "A confounder is a third variable correlated with both the exposure and the outcome, creating a spurious or masking a real association."
+            },
+            {
+                id: 75, category: "Research & Quality Improvement",
+                stem: "In DHIS2 health data reporting, what audit process verifies that clinical registry records in ward logbooks match submitted monthly reports?",
+                options: [
+                    "A) Data Quality Audit (DQA)",
+                    "B) Financial Compliance Review",
+                    "C) Morbidity Mortality Conference",
+                    "D) Clinical Skills Assessment"
+                ],
+                correct: 0,
+                explanation: "Data Quality Audits (DQA) evaluate data accuracy, completeness, and timeliness by cross-checking primary source register entries with HMIS/DHIS2 aggregations."
+            },
+
+            // --- DOMAIN 4: MEDICAL EDUCATION & ETHICS (76 to 100) ---
+            {
+                id: 76, category: "Medical Education & Ethics",
+                stem: "A 17-year-old married female presents alone requesting family planning advice and contraception. Under Ethiopian law and medical ethics frameworks regarding reproductive rights, how should the physician handle consent?",
+                options: [
+                    "A) Refuse service and demand her parents or husband provide written authorization",
+                    "B) Provide confidential reproductive health counseling and services, as mature/emancipated minors have full reproductive autonomy",
+                    "C) Notify her husband immediately before prescribing any contraceptive",
+                    "D) Admit her to the ward for compulsory psychiatric evaluation"
+                ],
+                correct: 1,
+                explanation: "Reproductive health services for emancipated/married adolescents are confidential and do not require parental or spousal consent."
+            },
+            {
+                id: 77, category: "Medical Education & Ethics",
+                stem: "A conscious, competent 45-year-old Jehovah's Witness patient with severe upper GI bleeding (Hb 4.2 g/dL) refuses blood transfusion after full explanation of life-threatening risks. What ethical principle obligates the doctor to respect the patient's refusal?",
+                options: [
+                    "A) Beneficence",
+                    "B) Patient Autonomy",
+                    "C) Paternalism",
+                    "D) Distributive Justice"
+                ],
+                correct: 1,
+                explanation: "Autonomy grants informed, competent adult patients the legal and ethical right to refuse any medical intervention, even life-saving blood transfusions."
+            },
+            {
+                id: 78, category: "Medical Education & Ethics",
+                stem: "According to Miller's Pyramid of Clinical Competence in medical education, at which level is a medical intern evaluated when directly observed performing a lumbar puncture on a patient in the ED?",
+                options: [
+                    "A) Knows (Knowledge)",
+                    "B) Knows How (Applied Competence)",
+                    "C) Shows How (Performance in Simulated Context)",
+                    "D) Does (Action in Real Clinical Practice)"
+                ],
+                correct: 3,
+                explanation: "Miller's Pyramid: Knows (fact) -> Knows How (concept) -> Shows How (simulation) -> Does (real-world clinical practice observation)."
+            },
+            {
+                id: 79, category: "Medical Education & Ethics",
+                stem: "A GP IV notices that a fellow senior medical colleague arrives on duty smelling strongly of alcohol, demonstrating slurred speech and unsteady gait while managing emergency patients. What is the ethically mandatory first action?",
+                options: [
+                    "A) Ignore the situation to preserve peer friendship and professional courtesy",
+                    "B) Immediately relieve the impaired colleague of patient duties to ensure patient safety, and report to the medical director",
+                    "C) Challenge the colleague to a physical fight in the staff room",
+                    "D) Administer IV normal saline and caffeine to the colleague quietly"
+                ],
+                correct: 1,
+                explanation: "Patient safety is paramount. An impaired practitioner must be immediately removed from clinical care and escalated through formal administrative leadership."
+            },
+            {
+                id: 80, category: "Medical Education & Ethics",
+                stem: "When conducting a Training Needs Assessment (TNA) for health center nurses prior to designing a CME module, which method provides the most objective data on practical clinical skill gaps?",
+                options: [
+                    "A) Self-administered satisfaction surveys",
+                    "B) Direct clinical observation using standardized checklist rubrics during patient care",
+                    "C) Asking health center administrators for verbal opinions",
+                    "D) Reviewing high school academic transcripts"
+                ],
+                correct: 1,
+                explanation: "Direct workplace observation against objective performance rubrics provides true behavioral evidence of skill deficits compared to self-reports."
+            },
+            {
+                id: 81, category: "Medical Education & Ethics",
+                stem: "During a mass casualty disaster (bus crash with 50 critically injured patients arriving simultaneously), which ethical framework overrides individual autonomy to guide patient prioritization?",
+                options: [
+                    "A) Utilitarian / Distributive Justice Framework (Doing the greatest good for the greatest number of salvageable lives)",
+                    "B) Strict First-Come, First-Served Ethics",
+                    "C) Absolute Autonomy Framework",
+                    "D) Financial Meritocracy Framework"
+                ],
+                correct: 0,
+                explanation: "Disaster triage relies on utilitarian ethics—allocating finite emergency resources to maximize survival for the greatest number of patients."
+            },
+            {
+                id: 82, category: "Medical Education & Ethics",
+                stem: "A pharmaceutical representative offers a GP IV an expensive personal laptop in exchange for prescribing a brand-name antibiotic exclusively in the hospital. What ethical breach does this represent?",
+                options: [
+                    "A) Beneficence",
+                    "B) Conflict of Interest and Unethical Medical Kickback",
+                    "C) Professional Autonomy",
+                    "D) Compassionate Care"
+                ],
+                correct: 1,
+                explanation: "Accepting personal financial gifts or inducements from industry creates a direct conflict of interest, compromising objective clinical decision-making."
+            },
+            {
+                id: 83, category: "Medical Education & Ethics",
+                stem: "An unconscious patient with severe head trauma requires emergency decompressive craniotomy. No family members or legal guardians are reachable despite exhaustive efforts. What ethical and legal doctrine permits the surgical team to proceed without signed consent?",
+                options: [
+                    "A) Doctrine of Substituted Judgment",
+                    "B) Emergency Exception to Informed Consent (Implied Consent)",
+                    "C) Paternalistic Mandate",
+                    "D) Therapeutic Privilege"
+                ],
+                correct: 1,
+                explanation: "Under the emergency exception, consent is implied for life- or limb-saving interventions when an incapacitated patient cannot consent and no proxy is available."
+            },
+            {
+                id: 84, category: "Medical Education & Ethics",
+                stem: "What is the primary core ethical duty embodied by the principle of Non-Maleficence?",
+                options: [
+                    "A) To actively promote health and well-being",
+                    "B) First, do no harm ('Primum non nocere')",
+                    "C) To treat all patients equally regardless of status",
+                    "D) To tell the truth at all times"
+                ],
+                correct: 1,
+                explanation: "Non-maleficence obligates healthcare providers to avoid inflicting intentional or negligent harm on patients."
+            },
+            {
+                id: 85, category: "Medical Education & Ethics",
+                stem: "A GP IV accidentally prescribes a 10-fold overdose of Gentamicin to an infant due to a math calculation error. The error is caught by nursing before administration, and NO harm comes to the child. What is the ethically appropriate professional action?",
+                options: [
+                    "A) Hide the prescription error and destroy the medication sheet",
+                    "B) Document the near-miss in the hospital clinical incident reporting system to analyze system vulnerabilities",
+                    "C) Blame the pharmacist for selling the medication",
+                    "D) Discharge the patient immediately to prevent inspection"
+                ],
+                correct: 1,
+                explanation: "Near-miss reporting is vital in medical safety culture to fix system weaknesses (e.g., dosage calculation checks) without punitive suppression."
+            },
+            {
+                id: 86, category: "Medical Education & Ethics",
+                stem: "In medical certification of death according to international ICD guidelines, where on the death certificate should the underlying cause of death (the disease that initiated the chain of events leading directly to death) be recorded?",
+                options: [
+                    "A) Part II (Other significant conditions contributing to death)",
+                    "B) The lowest completed line of Part I (Cause of Death sequence)",
+                    "C) The top immediate line of Part I",
+                    "D) In the clinical signature box"
+                ],
+                correct: 1,
+                explanation: "Part I line (a) is the immediate cause; the lowest completed line in Part I represents the underlying cause of death that started the physiological sequence."
+            },
+            {
+                id: 87, category: "Medical Education & Ethics",
+                stem: "In clinical teaching of medical interns, what does the One-Minute Preceptor model's micro-skill 'Get a Commitment' require the supervisor to ask the intern?",
+                options: [
+                    "A) 'What textbook did you read last night?'",
+                    "B) 'What do you think is going on with this patient diagnostic-wise?'",
+                    "C) 'How many hours did you sleep on call?'",
+                    "D) 'Can you complete the discharge paper in 1 minute?'"
+                ],
+                correct: 1,
+                explanation: "'Get a commitment' forces the trainee to commit to a primary diagnosis or plan, encouraging clinical reasoning rather than passive learning."
+            },
+            {
+                id: 88, category: "Medical Education & Ethics",
+                stem: "A GP IV examines a 6-year-old child and suspects non-accidental trauma (child abuse) based on multiple cigarette burns and circular bruises in various stages of healing. The parents demand immediate discharge. What is the physician's legal and ethical obligation?",
+                options: [
+                    "A) Discharge the child immediately to respect parental rights",
+                    "B) Detain/admit the child for protection, provide necessary medical care, and immediately report suspected child abuse to social services and law enforcement",
+                    "C) Confront parents aggressively and refuse all further medical documentation",
+                    "D) Request a financial payment before reporting"
+                ],
+                correct: 1,
+                explanation: "Child protection laws mandate reporting suspected abuse. The legal duty to protect vulnerable children overrides parental custody demands."
+            },
+            {
+                id: 89, category: "Medical Education & Ethics",
+                stem: "A local newspaper journalist calls the medical ward asking for clinical details regarding a famous politician currently admitted with acute pancreatitis. What is the ethical response?",
+                options: [
+                    "A) Disclose all clinical details freely to promote public transparency",
+                    "B) Refuse to disclose any medical information without explicit written consent from the patient",
+                    "C) Charge the journalist a consultation fee and provide oral summaries",
+                    "D) Confirm admission but disclose a fake medical diagnosis"
+                ],
+                correct: 1,
+                explanation: "Patient confidentiality protects all health information. Disclosing details to media without explicit written consent is a severe ethical and legal violation."
+            },
+            {
+                id: 90, category: "Medical Education & Ethics",
+                stem: "Under general medical ethics principles, what is Active Euthanasia (deliberately administering a lethal drug injection to end life) legally classified as in Ethiopia?",
+                options: [
+                    "A) Standard palliative care option",
+                    "B) Unlawful and illegal criminal act under the Penal Code",
+                    "C) Authorized medical procedure with 2-physician approval",
+                    "D) Routine end-of-life protocol"
+                ],
+                correct: 1,
+                explanation: "Active euthanasia and physician-assisted suicide are illegal under Ethiopian penal law and strictly prohibited by medical ethics codes."
+            },
+            {
+                id: 91, category: "Medical Education & Ethics",
+                stem: "What is the key purpose of a Clinical Ethics Committee (CEC) in a hospital setting?",
+                options: [
+                    "A) To manage hospital staff payroll",
+                    "B) To offer advisory consultations on complex ethical dilemmas involving patient care decisions",
+                    "C) To conduct clinical trials for foreign pharmaceutical companies",
+                    "D) To enforce clinical attendance hours for nurses"
+                ],
+                correct: 1,
+                explanation: "CECs assist clinicians, patients, and families in analyzing complex ethical dilemmas (e.g., withdrawal of life support, surrogate decision-making)."
+            },
+            {
+                id: 92, category: "Medical Education & Ethics",
+                stem: "According to Kirkpatrick's Model of Training Evaluation, evaluating whether health staff actually apply newly learned infection prevention skills in their daily ward work corresponds to which level?",
+                options: [
+                    "A) Level 1: Reaction",
+                    "B) Level 2: Learning",
+                    "C) Level 3: Behavior (Application in Workplace)",
+                    "D) Level 4: Results"
+                ],
+                correct: 2,
+                explanation: "Kirkpatrick Model: Level 1 (Reaction) -> Level 2 (Learning) -> Level 3 (Behavior change on the job) -> Level 4 (Organizational results)."
+            },
+            {
+                id: 93, category: "Medical Education & Ethics",
+                stem: "In public health law, what ethical principle justifies mandatory isolation or quarantine of a patient with active Multi-Drug Resistant Tuberculosis (MDR-TB) who refuses voluntary treatment?",
+                options: [
+                    "A) Autonomy Principle",
+                    "B) Harm Principle (Protecting public safety and preventing infectious harm to others)",
+                    "C) Financial Reciprocity",
+                    "D) Paternalistic Supremacy"
+                ],
+                correct: 1,
+                explanation: "The Harm Principle asserts that individual liberty can be legitimately restricted by public health authority to prevent serious infectious harm to others."
+            },
+            {
+                id: 94, category: "Medical Education & Ethics",
+                stem: "In medical record documentation, what is the legal significance of the clinical maxim 'If it is not documented...'",
+                options: [
+                    "A) '...it was done verbally.'",
+                    "B) '...it was not done.'",
+                    "C) '...it is assumed completed.'",
+                    "D) '...it saves paper.'"
+                ],
+                correct: 1,
+                explanation: "In medico-legal evaluations and court proceedings, undocumented clinical exams, treatments, or warnings are legally presumed to have never occurred."
+            },
+            {
+                id: 95, category: "Medical Education & Ethics",
+                stem: "A patient with terminal stage IV pancreatic cancer experiences severe pain. The physician prescribes high-dose Morphine knowing it provides pain relief, even if it may potentially hasten death as an unintended side effect. What ethical doctrine justifies this action?",
+                options: [
+                    "A) Principle of Double Effect",
+                    "B) Principle of Maleficence",
+                    "C) Doctrine of Involuntary Euthanasia",
+                    "D) Utilitarian Substitution"
+                ],
+                correct: 0,
+                explanation: "The Principle of Double Effect permits an action with a foreseen negative effect (e.g., potential respiratory depression) if the primary intent is morally good (relieving severe suffering)."
+            },
+            {
+                id: 96, category: "Medical Education & Ethics",
+                stem: "Which element is NOT required to establish a legal claim of Medical Malpractice / Negligence against a medical practitioner?",
+                options: [
+                    "A) Duty of Care owed to the patient",
+                    "B) Breach of standard duty of care",
+                    "C) Proof of financial profit by the practitioner",
+                    "D) Direct causation resulting in actual harm/damages"
+                ],
+                correct: 2,
+                explanation: "Malpractice requires 4 elements: Duty, Breach of duty, Causation, and Damages. Financial profit by the practitioner is irrelevant."
+            },
+            {
+                id: 97, category: "Medical Education & Ethics",
+                stem: "In medical teaching, what characterizes formative assessment compared to summative assessment?",
+                options: [
+                    "A) Formative assessment provides ongoing feedback to guide improvement during the learning process, without awarding final pass/fail grades",
+                    "B) Formative assessment is performed strictly at the end of a residency program to determine licensure",
+                    "C) Formative assessment uses only multiple-choice questions",
+                    "D) Formative assessment is conducted by external ministry inspectors"
+                ],
+                correct: 0,
+                explanation: "Formative assessments occur during learning to provide feedback for improvement; summative assessments evaluate final achievement at the end of a module."
+            },
+            {
+                id: 98, category: "Medical Education & Ethics",
+                stem: "A GP IV serves as an expert witness in a court case regarding physical trauma. What is the doctor's primary legal duty in court?",
+                options: [
+                    "A) To win the case for the party that paid the court fee",
+                    "B) To provide objective, truthful, and impartial medical testimony to assist the court",
+                    "C) To conceal medical evidence that disproves police claims",
+                    "D) To advocate exclusively for the hospital management"
+                ],
+                correct: 1,
+                explanation: "An expert witness owes an overriding duty to the court to present objective, truthful, and non-partisan medical evidence."
+            },
+            {
+                id: 99, category: "Medical Education & Ethics",
+                stem: "A 15-year-old adolescent presents with depression and self-harm marks. During counseling, he admits he has detailed plans to commit suicide tonight. What is the correct ethical management regarding confidentiality?",
+                options: [
+                    "A) Maintain absolute secrecy and tell no one under any circumstances",
+                    "B) Breach confidentiality immediately to notify parents/guardians and psychiatric services to prevent imminent self-harm",
+                    "C) Post the warning on social media",
+                    "D) Send the patient home alone with a warning leaflet"
+                ],
+                correct: 1,
+                explanation: "Confidentiality can and must be breached when there is imminent threat of grave harm or death to the patient or others."
+            },
+            {
+                id: 100, category: "Medical Education & Ethics",
+                stem: "Under national health governance standards, what is the primary role of Continuous Professional Development (CPD) for General Practitioners?",
+                options: [
+                    "A) To generate revenue for medical associations",
+                    "B) To maintain, update, and enhance clinical knowledge, professional skills, and ethical competencies required for re-licensure and safe practice",
+                    "C) To reduce physician working hours in public hospitals",
+                    "D) To replace formal undergraduate medical education"
+                ],
+                correct: 1,
+                explanation: "CPD ensures medical practitioners maintain ongoing lifelong learning, clinical competency, and alignment with modern standards throughout their professional career."
+            }
+        ];
+
+        // Combine all domain questions into the master dataset
+        examQuestions.length = 33; // Keep first 33 curated questions
+        examQuestions.push(...domain2Start);
+        examQuestions.push(...additionalQuestions);
+
+        /* ================= 5. APP STATE MANAGEMENT ================= */
+        let currentLanguage = 'am';
+        let currentTab = 'jd';
+        let userAnswers = {};
+        let currentQuestionIdx = 0;
+        let selectedCategoryFilter = 'ALL';
+
+        function loadProgress() {
+            try {
+                const saved = localStorage.getItem('gp4_exam_answers');
+                if (saved) {
+                    userAnswers = JSON.parse(saved);
+                }
+            } catch (e) {
+                console.error("Storage error:", e);
+            }
+        }
+
+        function saveProgress() {
+            try {
+                localStorage.setItem('gp4_exam_answers', JSON.stringify(userAnswers));
+            } catch (e) {
+                console.error("Storage error:", e);
+            }
+        }
+
+        /* ================= 6. RENDER FUNCTIONS ================= */
+
+        // Render Job Description Accordion
+        function renderJobDescriptionAccordion() {
+            const container = document.getElementById('jd-accordion-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            jobDescriptionAccordion.forEach((sec) => {
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-3xl p-6 transition-all duration-300';
+
+                const titleText = sec.title[currentLanguage] || sec.title['am'];
+
+                const dutiesList = sec.duties.map(d => {
+                    const text = d[currentLanguage] || d['am'];
+                    return `
+                        <li class="flex items-start gap-3 text-xs sm:text-sm leading-relaxed text-slate-200">
+                            <i class="fa-solid fa-circle-check text-brand-400 mt-1 flex-shrink-0"></i>
+                            <span>${text}</span>
+                        </li>
+                    `;
+                }).join('');
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between cursor-pointer" onclick="toggleAccordion('${sec.id}')">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-brand-500/10 border border-brand-500/20 text-brand-400 flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid ${sec.icon}"></i>
+                            </div>
+                            <h3 class="text-base sm:text-lg font-bold text-slate-100">${titleText}</h3>
+                        </div>
+                        <button class="text-slate-400 hover:text-brand-400 p-2">
+                            <i class="fa-solid fa-chevron-down transition-transform duration-300" id="icon-${sec.id}"></i>
+                        </button>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-slate-700/50 space-y-3 hidden" id="body-${sec.id}">
+                        <ul class="space-y-3">
+                            ${dutiesList}
+                        </ul>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            setTimeout(() => toggleAccordion('res1'), 50);
+        }
+
+        function toggleAccordion(id) {
+            const body = document.getElementById(`body-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            if (body && icon) {
+                const isHidden = body.classList.contains('hidden');
+                if (isHidden) {
+                    body.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                } else {
+                    body.classList.add('hidden');
+                    icon.classList.remove('rotate-180');
+                }
+            }
+        }
+
+        // Render 3D Flashcards
+        function renderFlashcards(filter = 'all') {
+            const container = document.getElementById('flashcard-grid');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const filtered = filter === 'all' 
+                ? flashcardData 
+                : flashcardData.filter(f => f.category === filter);
+
+            filtered.forEach(card => {
+                const cardEl = document.createElement('div');
+                cardEl.className = 'flip-card';
+                cardEl.onclick = () => cardEl.classList.toggle('flipped');
+
+                cardEl.innerHTML = `
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card border border-brand-500/30">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-brand-500/10 text-brand-400 mb-4">Tap to Flip</span>
+                            <h3 class="text-base font-bold text-slate-100">${card.front}</h3>
+                            <i class="fa-solid fa-rotate text-brand-500/40 text-2xl mt-6"></i>
+                        </div>
+                        <div class="flip-card-back glass-card bg-gradient-to-br from-brand-900/90 to-slate-900 text-white">
+                            <h4 class="text-xs font-bold text-brand-400 uppercase tracking-wider mb-2">Core Standard Definition</h4>
+                            <p class="text-xs leading-relaxed text-slate-200 mb-3">${card.back}</p>
+                            <p class="text-xs leading-relaxed text-brand-300 font-medium italic border-t border-slate-700/60 pt-2">${card.am}</p>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(cardEl);
+            });
+        }
+
+        // Exam Question Filtering & Display
+        function getFilteredQuestions() {
+            if (selectedCategoryFilter === 'ALL') {
+                return examQuestions;
+            }
+            return examQuestions.filter(q => q.category === selectedCategoryFilter);
+        }
+
+        function renderCurrentQuestion() {
+            const questions = getFilteredQuestions();
+            const card = document.getElementById('question-card');
+            if (!card) return;
+
+            if (questions.length === 0) {
+                card.innerHTML = `<p class="text-center text-slate-400">No questions found.</p>`;
+                return;
+            }
+
+            if (currentQuestionIdx >= questions.length) currentQuestionIdx = questions.length - 1;
+            if (currentQuestionIdx < 0) currentQuestionIdx = 0;
+
+            const q = questions[currentQuestionIdx];
+            const selectedOpt = userAnswers[q.id];
+            const isAnswered = selectedOpt !== undefined;
+
+            let optionsHtml = q.options.map((opt, optIdx) => {
+                let btnStyle = "bg-slate-800/80 border-slate-700 hover:border-brand-500 text-slate-200";
+                let badgeStyle = "bg-slate-700 text-slate-300";
+
+                if (isAnswered) {
+                    if (optIdx === q.correct) {
+                        btnStyle = "bg-emerald-500/15 border-emerald-500 text-emerald-400 font-semibold";
+                        badgeStyle = "bg-emerald-500 text-white";
+                    } else if (selectedOpt === optIdx) {
+                        btnStyle = "bg-rose-500/15 border-rose-500 text-rose-400 font-semibold";
+                        badgeStyle = "bg-rose-500 text-white";
+                    } else {
+                        btnStyle = "bg-slate-800/30 border-transparent opacity-40";
+                    }
+                }
+
+                return `
+                    <button onclick="answerQuestion(${q.id}, ${optIdx})" ${isAnswered ? 'disabled' : ''} class="w-full text-left p-4 rounded-2xl border transition-all flex items-start gap-3 ${btnStyle}">
+                        <span class="w-7 h-7 rounded-xl flex items-center justify-center text-xs font-bold flex-shrink-0 ${badgeStyle}">
+                            ${String.fromCharCode(65 + optIdx)}
+                        </span>
+                        <span class="text-xs sm:text-sm pt-0.5 leading-relaxed">${opt}</span>
+                    </button>
+                `;
+            }).join('');
+
+            let explanationHtml = '';
+            if (isAnswered) {
+                const isCorrect = selectedOpt === q.correct;
+                explanationHtml = `
+                    <div class="mt-6 p-4 rounded-2xl border ${isCorrect ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300' : 'bg-rose-500/10 border-rose-500/30 text-rose-300'} animate-fadeIn">
+                        <div class="flex items-center gap-2 font-bold text-xs uppercase tracking-wider mb-2">
+                            <i class="fa-solid ${isCorrect ? 'fa-circle-check text-emerald-400' : 'fa-circle-xmark text-rose-400'}"></i>
+                            ${isCorrect ? 'Correct Clinical Rationale' : 'Incorrect Clinical Rationale'}
+                        </div>
+                        <p class="text-xs leading-relaxed text-slate-200">${q.explanation}</p>
+                    </div>
+                `;
+            }
+
+            card.innerHTML = `
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-brand-500/10 text-brand-400 border border-brand-500/20 uppercase tracking-wide">
+                            Question ${currentQuestionIdx + 1} of ${questions.length} • ${q.category}
+                        </span>
+                        <span class="text-xs font-bold text-slate-400">QID: #${q.id}</span>
+                    </div>
+
+                    <h3 class="text-base sm:text-lg font-bold leading-snug text-slate-100 mb-6">
+                        ${q.stem}
+                    </h3>
+
+                    <div class="space-y-3">
+                        ${optionsHtml}
+                    </div>
+
+                    ${explanationHtml}
+                </div>
+            `;
+
+            renderPalette();
+            updateStats();
+        }
+
+        function answerQuestion(qId, optionIdx) {
+            if (userAnswers[qId] !== undefined) return;
+            userAnswers[qId] = optionIdx;
+            saveProgress();
+            renderCurrentQuestion();
+        }
+
+        function nextQuestion() {
+            const questions = getFilteredQuestions();
+            if (currentQuestionIdx < questions.length - 1) {
+                currentQuestionIdx++;
+                renderCurrentQuestion();
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIdx > 0) {
+                currentQuestionIdx--;
+                renderCurrentQuestion();
+            }
+        }
+
+        function jumpToQuestion(filteredIdx) {
+            currentQuestionIdx = filteredIdx;
+            renderCurrentQuestion();
+        }
+
+        // Render 100 Button Palette
+        function renderPalette() {
+            const palette = document.getElementById('question-palette');
+            if (!palette) return;
+            palette.innerHTML = '';
+
+            const questions = getFilteredQuestions();
+            document.getElementById('palette-filter-count').innerText = `${questions.length} Qs`;
+
+            questions.forEach((q, idx) => {
+                const isCurrent = idx === currentQuestionIdx;
+                const ans = userAnswers[q.id];
+
+                let btnClass = "bg-slate-800 text-slate-300";
+
+                if (ans !== undefined) {
+                    if (ans === q.correct) {
+                        btnClass = "bg-emerald-500 text-white font-bold";
+                    } else {
+                        btnClass = "bg-rose-500 text-white font-bold";
+                    }
+                }
+
+                if (isCurrent) {
+                    btnClass += " ring-2 ring-brand-400 ring-offset-2 ring-offset-slate-900";
+                }
+
+                const btn = document.createElement('button');
+                btn.className = `w-full h-9 rounded-xl text-xs font-semibold flex items-center justify-center transition-all ${btnClass}`;
+                btn.innerText = q.id;
+                btn.onclick = () => jumpToQuestion(idx);
+
+                palette.appendChild(btn);
+            });
+        }
+
+        function updateStats() {
+            const total = examQuestions.length;
+            const answeredCount = Object.keys(userAnswers).length;
+
+            let correctCount = 0;
+            let incorrectCount = 0;
+
+            examQuestions.forEach(q => {
+                const ans = userAnswers[q.id];
+                if (ans !== undefined) {
+                    if (ans === q.correct) correctCount++;
+                    else incorrectCount++;
+                }
+            });
+
+            const scorePercent = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+
+            document.getElementById('stat-score').innerText = `${scorePercent}%`;
+            document.getElementById('stat-correct').innerText = correctCount;
+            document.getElementById('stat-incorrect').innerText = incorrectCount;
+            document.getElementById('stat-remaining').innerText = total - answeredCount;
+
+            document.getElementById('quiz-progress-text').innerText = `${answeredCount} of ${total} Answered`;
+            document.getElementById('exam-progress-bar').style.width = `${(answeredCount / total) * 100}%`;
+        }
+
+        function filterExamCategory(cat) {
+            selectedCategoryFilter = cat;
+            currentQuestionIdx = 0;
+            renderCurrentQuestion();
+        }
+
+        function resetExamProgress() {
+            if (confirm("Reset all 100 question progress and score stats?")) {
+                userAnswers = {};
+                saveProgress();
+                currentQuestionIdx = 0;
+                renderCurrentQuestion();
+            }
+        }
+
+        /* ================= 7. TAB & CONTROLS ================= */
+        function switchTab(tab) {
+            currentTab = tab;
+
+            ['jd', 'flashcards', 'exam'].forEach(t => {
+                const sec = document.getElementById(`sec-${t}`);
+                const navBtn = document.getElementById(`tab-${t}`);
+                const mobBtn = document.getElementById(`mob-tab-${t}`);
+
+                if (t === tab) {
+                    if (sec) sec.classList.remove('hidden');
+                    if (navBtn) navBtn.className = "px-5 py-2.5 rounded-xl font-medium text-sm transition-all flex items-center gap-2 bg-white dark:bg-brand-600 text-brand-600 dark:text-white shadow-md";
+                    if (mobBtn) mobBtn.className = "text-brand-400 flex items-center gap-1 font-bold";
+                } else {
+                    if (sec) sec.classList.add('hidden');
+                    if (navBtn) navBtn.className = "px-5 py-2.5 rounded-xl font-medium text-sm transition-all flex items-center gap-2 text-slate-600 dark:text-slate-300 hover:text-brand-500";
+                    if (mobBtn) mobBtn.className = "text-slate-400 flex items-center gap-1";
+                }
+            });
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                localStorage.setItem('gp4_theme', 'light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                localStorage.setItem('gp4_theme', 'dark');
+            }
+        }
+
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'am' ? 'en' : 'am';
+            document.getElementById('lang-label').innerText = currentLanguage === 'am' ? 'AM / EN' : 'EN / AM';
+            renderJobDescriptionAccordion();
+        }
+
+        /* ================= 8. INITIALIZATION ================= */
+        window.onload = function () {
+            updateWorkExperience();
+            setInterval(updateWorkExperience, 86400000); // Daily update
+            loadProgress();
+            renderJobDescriptionAccordion();
+            renderFlashcards('all');
+            renderCurrentQuestion();
+        }
+    </script>
+</body>
+</html>
